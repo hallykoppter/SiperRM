@@ -81,8 +81,9 @@
 
                     </td>
                     <td>
-                        <a href="<?php echo base_url("data-rm/edit/") . $item["no_urut"] ?>" class="badge badge-primary"><span class="fas fa-edit"></span></a>
-                        <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-delete"></span></a>
+                        <a href="<?php echo base_url("data-rm/edit/") . $item["no_urut"] ?>" class="badge badge-primary"><span class="fas fa-edit fa-sm"></span></a>
+                        <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-delete fa-sm"></span></a>
+                        <a href="<?php echo base_url("data-rm/qrcode/") . $item["no_urut"] ?>" class="badge badge-success"><span class="fas fa-qrcode fa-sm"></span></a>
                     </td>
                 <?php endif; ?>
             </tr>

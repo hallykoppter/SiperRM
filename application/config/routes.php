@@ -61,6 +61,7 @@ $route['data-rm/input'] = 'admin/Data_rm/input';
 $route['data-rm/insert'] = 'admin/Data_rm/insert';
 $route['data-rm/delete/(:any)'] = 'admin/Data_rm/delete/$1';
 $route['data-rm/edit/(:any)'] = 'admin/Data_rm/edit/$1';
+$route['data-rm/qrcode/(:any)'] = 'admin/Data_rm/qrcode/$1';
 $route['data-rm/update'] = 'admin/Data_rm/update';
 $route['alih-media'] = 'admin/si-retensi/Alihmedia';
 $route['pelestarian'] = 'admin/si-retensi/Pelestarian';

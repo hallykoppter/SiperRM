@@ -36,6 +36,7 @@ $("#norm").on("click", function () {
 		dataType: "json",
 		success: function (data) {
 			$("#diagnosa").val(data.diagnosa);
+			$("#tanggal_kunjungan").val(data.tanggal_kunjungan);
 		},
 	});
 	return false;

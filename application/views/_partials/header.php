@@ -18,6 +18,7 @@ if ($this->session->userdata('level') == null) {
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>assets/demo/datatables-demo.js" rel="stylesheet" />
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>js/custom/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
 	<link href="<?php echo base_url() . "assets/font-awesome/css/" ?>font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="<?= base_url('assets/font-awesome/css/font-awesome.css') ?>">
 	<!-- <script src="<?php echo base_url() . "assets/font-awesome/" ?>all.min.js" crossorigin="anonymous"></script> -->
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>css/select2.min.css" rel="stylesheet" />
 	<<<<<<< HEAD <link href="<?php echo base_url() . "assets/" ?>bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">

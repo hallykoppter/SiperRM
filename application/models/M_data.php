@@ -45,7 +45,7 @@ class M_data extends CI_Model
 		}
 		return $data->result_array();
 	}
-	
+
 	public function filterpemusnahan($dari = null, $sampai = null)
 	{
 		if ($dari != null && $sampai != null) {
@@ -72,7 +72,7 @@ class M_data extends CI_Model
 			return $data->row_array();
 		}
 	}
-	
+
 	public function get_pemusnahan($id = null)
 	{
 		if ($id == null) {

@@ -106,7 +106,7 @@ class Pelestarian extends CI_Controller
 	public function permintaan()
 	{
 		$no_rm = $_POST['no_rm'];
-		$this->db->select('no_rm, diagnosa');
+		$this->db->select('no_rm, diagnosa, tanggal_kunjungan');
 		$this->db->where('no_rm', $no_rm);
 		$pasien = $this->db->get('tb_permintaan')->row_array();
 		echo json_encode($pasien);
