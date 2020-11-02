@@ -43,6 +43,7 @@
         <th>Diagnosa</th>
         <th>Tanggal Kunjungan</th>
         <th>Tanggal Pelestarian</th>
+        <th>Keterangan</th>
     </thead>
     <tfoot>
         <tr>
@@ -50,6 +51,7 @@
             <th>Diagnosa</th>
             <th>Tanggal Kunjungan</th>
             <th>Tanggal Pelestarian</th>
+            <th>Keterangan</th>
         </tr>
     </tfoot>
     <tbody>
@@ -59,6 +61,7 @@
                 <td><?= $c['diagnosa'] ?></td>
                 <td><?= $c['tanggal_kunjungan'] ?></td>
                 <td><?= $c['tanggal_pelestarian'] ?></td>
+                <td><?= $c['keterangan'] ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

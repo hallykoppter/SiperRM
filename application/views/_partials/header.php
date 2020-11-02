@@ -21,12 +21,12 @@ if ($this->session->userdata('level') == null) {
 	<link rel="stylesheet" href="<?= base_url('assets/font-awesome/css/font-awesome.css') ?>">
 	<!-- <script src="<?php echo base_url() . "assets/font-awesome/" ?>all.min.js" crossorigin="anonymous"></script> -->
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>css/select2.min.css" rel="stylesheet" />
-	<<<<<<< HEAD <link href="<?php echo base_url() . "assets/" ?>bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
-		<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>css/custom.css" rel="stylesheet" />
-		<!-- webcam -->
-		=======
-		<script src="<?php echo base_url() . "assets/" ?>scannerjs/scanner.js"></script>
-		>>>>>>> 7c68d14... cicilan revisi
+	<link href="<?php echo base_url() . "assets/" ?>bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
+	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>css/custom.css" rel="stylesheet" />
+	<!-- webcam -->
+	=======
+	<script src="<?php echo base_url() . "assets/" ?>scannerjs/scanner.js"></script>
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -116,13 +116,17 @@ if ($this->session->userdata('level') == null) {
 								<!-- <a class="nav-link" href="<?php echo base_url() . "pengembalian" ?>">Pengembalian</a> -->
 							</nav>
 						</div>
-						<?php if ($this->session->userdata('level') == 'admin') {
+						<?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas rm') {
 						?>
 							<div class="collapse" id="collapseLayouts4" aria-labelledby="headingFour" data-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="<?php echo base_url() . "klpcm" ?>">KLPCM</a>
 								</nav>
 							</div>
+						<?php
+						} ?>
+						<?php if ($this->session->userdata('level') == 'admin') {
+						?>
 							<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
 								<div class="sb-nav-link-icon"><i class="fa fa-columns"></i></div>
 								Data Master

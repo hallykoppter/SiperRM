@@ -54,21 +54,20 @@ class Lpeminjaman extends CI_Controller
 	{
 		$data['peminjaman'] = [];
 		foreach ($peminjaman as $p) {
-			$tanggalKembali = new DateTime($p["tgl_kembali"]);
+			$tanggalPinjam = new DateTime($p["tanggal_pinjam"]);
 			$pengembalian = $p['tgl_pengembalian'];
 			$tanggalPengembalian = new DateTime($pengembalian);
-			$keterlambatan = $tanggalPengembalian->diff($tanggalKembali)->days;
+			$keterlambatan = $tanggalPengembalian->diff($tanggalPinjam)->days;
 			if ($p['tgl_pengembalian'] == null) {
 				$keterangan = "Belum Kembali";
 				$pengembalian = "-";
 				$keterlambatan = 0;
-			} else if ($p['tgl_kembali'] == $p['tgl_pengembalian']) {
+			} else if ($p['tanggal_pinjam'] == $p['tgl_pengembalian']) {
 				$keterangan = "Tepat Waktu";
 				$keterlambatan = 0;
-			} else if ($keterlambatan > 0) {
+			} else if ($keterlambatan > 2) {
 				$keterangan = "Terlambat";
 			}
-
 
 			$temp = [
 				'no_rm' => $p['no_rm'],

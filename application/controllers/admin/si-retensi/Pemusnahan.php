@@ -39,7 +39,7 @@ class Pemusnahan extends CI_Controller
 	{
 		$header["title"] = "SI Retensi";
 		$card["title"] = " Pemusnahan / Tambah Pemusnahan";
-		$data['pasien'] = $this->db->get('tb_pasien')->result_array();
+		$data['pasien'] = $this->db->get('tb_permintaan')->result_array();
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
 		$this->load->view('admin/si-retensi/pemusnahan/tambah-pemusnahan', $data);
@@ -101,5 +101,13 @@ class Pemusnahan extends CI_Controller
 		$this->db->delete('tb_pemusnahan');
 		echo "<script>alert('Data Berhasil dihapus')</script>";
 		echo "<script>document.location.href='$url'</script>";
+	}
+	public function permintaan()
+	{
+		$no_rm = $_POST['no_rm'];
+		$this->db->select('no_rm, diagnosa, tanggal_kunjungan');
+		$this->db->where('no_rm', $no_rm);
+		$pasien = $this->db->get('tb_permintaan')->row_array();
+		echo json_encode($pasien);
 	}
 }

@@ -1,4 +1,4 @@
-<?php if ($this->session->userdata('level') == 'admin') : ?>
+<?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas rm') : ?>
     <a href="<?php echo base_url(''); ?>data-rm/input" class="tombolbtm btn btn-primary btn-sm">Tambah Data</a>
 <?php endif; ?>
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -14,6 +14,9 @@
             <th>Status Data</th>
             <th>Aksi</th>
         <?php endif; ?>
+        <?php if ($this->session->userdata('level') == 'petugas rm' || ($this->session->userdata('level') == 'petugas poli')) : ?>
+            <th>Aksi</th>
+        <?php endif; ?>
     </thead>
     <tfoot>
         <tr>
@@ -26,6 +29,9 @@
             <th>Alamat</th>
             <?php if ($this->session->userdata('level') == 'admin') : ?>
                 <th width="20%">Status Data</th>
+                <th>Aksi</th>
+            <?php endif; ?>
+            <?php if ($this->session->userdata('level') == 'petugas rm' || ($this->session->userdata('level') == 'petugas poli')) : ?>
                 <th>Aksi</th>
             <?php endif; ?>
         </tr>
@@ -83,6 +89,18 @@
                     <td>
                         <a href="<?php echo base_url("data-rm/edit/") . $item["no_urut"] ?>" class="badge badge-primary"><span class="fas fa-edit fa-sm"></span></a>
                         <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-delete fa-sm"></span></a>
+                        <a href="<?php echo base_url("data-rm/qrcode/") . $item["no_urut"] ?>" class="badge badge-success"><span class="fas fa-qrcode fa-sm"></span></a>
+                    </td>
+                <?php endif; ?>
+                <?php if ($this->session->userdata('level') == 'petugas rm') : ?>
+                    <td>
+                        <a href="<?php echo base_url("data-rm/edit/") . $item["no_urut"] ?>" class="badge badge-primary"><span class="fas fa-edit fa-sm"></span></a>
+                        <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-delete fa-sm"></span></a>
+                        <a href="<?php echo base_url("data-rm/qrcode/") . $item["no_urut"] ?>" class="badge badge-success"><span class="fas fa-qrcode fa-sm"></span></a>
+                    </td>
+                <?php endif; ?>
+                <?php if ($this->session->userdata('level') == 'petugas poli') : ?>
+                    <td>
                         <a href="<?php echo base_url("data-rm/qrcode/") . $item["no_urut"] ?>" class="badge badge-success"><span class="fas fa-qrcode fa-sm"></span></a>
                     </td>
                 <?php endif; ?>

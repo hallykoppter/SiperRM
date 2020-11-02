@@ -39,6 +39,14 @@
             </div>
         </div>
     </div>
+    <div class="row">
+		<div class="col-md">
+			<div class="form-group">
+				<label for="keterangan">Keterangan</label>
+				<input type="text" name="keterangan" id="keterangan" class="form-control" value="<?= $pelestarian['keterangan'] ?>">
+			</div>
+		</div>
+	</div>
     <button type="submit" class="btn btn-primary">Simpan</button>
     <a href="<?= base_url('pelestarian') ?>" class="btn btn-secondary">Kembali</a>
 </form>

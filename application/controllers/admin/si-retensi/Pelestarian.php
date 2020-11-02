@@ -25,7 +25,8 @@ class Pelestarian extends CI_Controller
 				'nama_pasien' => $p['nama_pasien'],
 				'diagnosa' => $p['diagnosa'],
 				'tanggal_pelestarian' => $p['tanggal_pelestarian'],
-				'selisih' => $selisih
+				'selisih' => $selisih,
+				'keterangan' => $p['keterangan']
 			];
 			array_push($data['pelestarian'], $lestari);
 		}
@@ -54,6 +55,7 @@ class Pelestarian extends CI_Controller
 			'diagnosa' => $this->input->post('diagnosa'),
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
 			'id_status' => 1,
+			'keterangan' => $this->input->post('keterangan'),
 			'tanggal_kunjungan' => $this->input->post('tanggal_kunjungan'),
 			'tanggal_pelestarian' => $this->input->post('tanggal_pelestarian')
 		];
@@ -84,6 +86,7 @@ class Pelestarian extends CI_Controller
 			'diagnosa' => $this->input->post('diagnosa'),
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
 			'id_status' => 1,
+			'keterangan' => $this->input->post('keterangan'),
 			'tanggal_kunjungan' => $this->input->post('tanggal_kunjungan'),
 			'tanggal_pelestarian' => $this->input->post('tanggal_pelestarian')
 		];

@@ -1,9 +1,9 @@
 <form action="<?= base_url('retensi-store') ?>" method="post">
 	<div class="row">
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
-				<label for="norm">No RM</label>
-				<select class="form-control js-example-basic-single" name="norm">
+				<label for="no_rm">No RM</label>
+				<select class="form-control js-example-basic-single" name="no_rm">
 					<option disable>--Pilih No RM--</option>
 					<?php foreach ($pasien as $p) : ?>
 						<option value="<?= $p['no_rm']; ?>"><?= $p['no_rm']; ?></option>
@@ -11,7 +11,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Jenis Pelayanan</label>
 				<select class="form-control js-example-basic-single" name="jenis_pelayanan">
@@ -32,19 +32,19 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Tanggal Kunjungan Terakhir</label>
 				<input type="text" name="tanggal_kunjungan" class="form-control datepicker" value="dd/mm/yyyy">
 			</div>
 		</div>
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Tanggal Pemindahan</label>
-				<input type="text" name="tanggal_pemindahan" value="dd/mm/yyyy" class="form-control datepicker">
+				<input type="text" name="tanggal_pemindahan" value="<?= date('Y-m-d')?>" class="form-control datepicker">
 			</div>
 		</div>
-		<div class="col-md">
+		<div class="col-md-6">
 			<label for="">Poli yang pinjam</label>
             <select class="form-control selectpicker" data-live-search="true" name="poli" id="">
                 <option>---Pilih Data---</option>

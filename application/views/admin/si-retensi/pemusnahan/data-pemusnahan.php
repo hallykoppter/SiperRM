@@ -26,7 +26,7 @@
                     <?php if ($p['tanggal_pemusnahan'] == "0000-00-00") : ?>
                         In Aktif
                     <?php else : ?>
-                        <?php if ($p['selisih'] >= "1825") : ?>
+                        <?php if ($p['selisih'] >= "730") : ?>
                             Dimusnahkan
                         <?php else : ?>
                             In Aktif

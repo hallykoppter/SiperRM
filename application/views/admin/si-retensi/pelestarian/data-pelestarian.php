@@ -5,6 +5,7 @@
         <th>Nama Pasien</th>
         <th>Diagnosa</th>
         <th>Status Data</th>
+        <th>Keterangan</th>
         <th>Action</th>
     </thead>
     <tfoot>
@@ -13,6 +14,7 @@
             <th>Nama Pasien</th>
             <th>Diagnosa</th>
             <th>Status Data</th>
+            <th>Keterangan</th>
             <th>Action</th>
         </tr>
     </tfoot>
@@ -33,6 +35,7 @@
                         <?php endif; ?>
                     <?php endif; ?>
 				</td>
+                <td><?= $p['keterangan'] ?></td>
                 <td>
                     <a href="<?php echo base_url('pelestarian/edit/' . $p['id_pelestarian']) ?>" class="btn btn-warning text-white">Edit</a>
                     <a href="<?php echo base_url('pelestarian/delete/' . $p['id_pelestarian']) ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>

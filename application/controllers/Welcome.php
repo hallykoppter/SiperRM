@@ -32,10 +32,11 @@ class Welcome extends CI_Controller
 		 </marquee>";
 		$peminjaman = $this->db->get('tb_peminjaman')->result_array();
 		$jadwal = $this->db->get('tb_jadwal')->result_array();
+		$retensi = $this->db->get('tb_permintaan')->result_array();
 		$terlambat = $this->db->query("SELECT * FROM tb_peminjaman WHERE tgl_pengembalian > tgl_kembali")->result_array();
 		$tidk_lengkap = $this->db->get('tb_peminjaman', ['kelengkapan' => 'Tidak Lengkap'])->result_array();
 		$data = [
-			'jadwal' => count($jadwal),
+			'retensi' => count($retensi),
 			'peminjaman' => count($peminjaman),
 			'terlambat' => count($terlambat),
 			'tidak_lengkap' => count($tidk_lengkap)

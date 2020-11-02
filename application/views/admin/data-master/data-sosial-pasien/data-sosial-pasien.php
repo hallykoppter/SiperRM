@@ -46,8 +46,10 @@
 
 					?>
 				</td>
-				<td><a href="<?= base_url('admin/data-master/datasosialpasien/delete/' . $psn['no_urut']) ?>" class="btn btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash sm"></i></a></td>
-				<!-- <td><a href="<?= base_url('admin/data-master/datasosialpasien/delete/' . $psn['no_urut']) ?>" class="btn btn-danger btn-sm">HAPUS</a></td> -->
+				<td>
+					<a href="<?= base_url('admin/data-master/datasosialpasien/delete/' . $psn['no_urut']) ?>" class="btn btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash sm"></i></a>
+					<a href="<?= base_url('admin/data-master/datasosialpasien/edit/' . $psn['no_urut']) ?>" class="btn btn-primary btn-sm">Edit</a></td>
+				</td>
 			</tr>
 		<?php
 			$num++;

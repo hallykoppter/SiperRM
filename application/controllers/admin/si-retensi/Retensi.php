@@ -37,6 +37,7 @@ class Retensi extends CI_Controller
 		$header["title"] = "Tambah Retensi";
 		$card["title"] = " Retensi / Tambah Retensi";
 		$data['poli'] = $this->db->get('tb_poli')->result_array();
+		$this->db->select('no_rm, nama_pasien');
 		$data['pasien'] = $this->db->get('tb_pasien')->result_array();
 		$data['jenis_pelayanan'] = $this->db->get('tb_poli')->result_array();
 		$this->load->view('_partials/header', $header);
@@ -53,20 +54,21 @@ class Retensi extends CI_Controller
 		$tglPemindahan = new DateTime($_POST["tanggal_pemindahan"]);
 		$tglkunjugan = new DateTime($_POST["tanggal_kunjungan"]);
 		$diff = $tglPemindahan->diff($tglkunjugan);
-		if (5 >= $diff->y) {
+		if (2> $diff->y) {
 			$id_status = 2;
+			$status_pengembalian = 1;
 		} else {
 			$id_status = 1;
+			$status_pengembalian = 1;
 		}
 		$data = [
 			'id_permintaan' => (int)$id_permintaan + 1,
-			'no_rm' => $_POST['norm'],
+			'no_rm' => $_POST['no_rm'],
 			'diagnosa' => $_POST['diagnosa'],
 			'pelayanan' => 'Rawat Jalan',
 			'jenis_pelayanan' => $_POST['jenis_pelayanan'],
-			'ket_jenis_pelayanan' => 1,
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
-			'status_permintaan' => 0,
+			'status_permintaan' => $status_pengembalian,
 			'id_status' => $id_status,
 			'id_poli' => $_POST['poli'],
 			'tanggal_kunjungan' => date("Y-m-d", strtotime($_POST['tanggal_kunjungan'])),
@@ -108,10 +110,12 @@ class Retensi extends CI_Controller
 		$tglkunjugan = new DateTime($_POST["tanggal_kunjungan"]);
 		$diff = $tglPemindahan->diff($tglkunjugan);
 		// print_r($diff->y);
-		if (5 >= $diff->y) {
+		if (2> $diff->y) {
 			$id_status = 2;
+			$status_pengembalian = 1;
 		} else {
 			$id_status = 1;
+			$status_pengembalian = 1;
 		}
 
 		// echo $id_status;
@@ -120,9 +124,8 @@ class Retensi extends CI_Controller
 			'diagnosa' => $_POST['diagnosa'],
 			'pelayanan' => 'Rawat Jalan',
 			'jenis_pelayanan' => $_POST['jenis_pelayanan'],
-			'ket_jenis_pelayanan' => 1,
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
-			'status_permintaan' => 0,
+			'status_permintaan' => $status_pengembalian,
 			'id_status' => $id_status,
 			'id_poli' => $_POST["poli"],
 			'tanggal_kunjungan' => date("Y-m-d", strtotime($_POST['tanggal_kunjungan'])),

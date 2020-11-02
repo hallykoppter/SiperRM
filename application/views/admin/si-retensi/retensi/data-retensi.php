@@ -7,7 +7,7 @@
 			<th>Nama Pasien</th>
 			<th>Diagnosa</th>
 			<th>Jenis Pelayanan</th>
-			<th>Status Pelayanan</th>
+			<th>Status Pengembalian</th>
 			<th>Status Data</th>
 			<th>Action</th>
 		</thead>
@@ -18,7 +18,7 @@
 				<th>Nama Pasien</th>
 				<th>Diagnosa</th>
 				<th>Jenis Pelayanan</th>
-				<th>Status Pelayanan</th>
+				<th>Status Pengembalian</th>
 				<th>Status Data</th>
 				<th>Action</th>
 			</tr>
@@ -42,28 +42,27 @@
 					<td><?php echo $r['jenis_pelayanan'] ?></td>
 					<?php if ($r['nama_status'] == "Kembali") : ?>
 						<td>
-							<div class="badge badge-success"><?php echo $r['nama_status'] ?></div>
+							<div class="badge badge-success">Kembali</div>
 						</td>
 						<td>
 							<div class="badge badge-danger">Nonaktif</div>
 						</td>
 					<?php else : ?>
 						<td>
-							<div class="badge badge-danger"><?php echo $r['nama_status'] ?></div>
+							<div class="badge badge-success">Kembali</div>
 						</td>
 						<td>
-							<input type="checkbox" name="status_data[]" value="<?php echo $r['id_permintaan'] ?>">
+							<div class="badge badge-success">Aktif</div>
 						</td>
 					<?php endif; ?>
 					<td>
 						<a title="Edit" href="<?= base_url('retensi-update/' . $r['id_permintaan']) ?>" class="badge badge-warning" id="tombolEdit" style="color: white;"><i class="fa fa-edit"></i></a>
 						<a title="Hapus" href="<?= base_url('retensi-delete/' . $r['id_permintaan']) ?>" onclick="return confirm('yakin ingin menghapus data?')" class="badge badge-danger"><i class="fa fa-trash"></i></a>
-						<a title="KIRIM PESAN" href="https://wa.me/?text=Pesan%20dari%20Puskesmas%20Jenggawah%20:%20Mengingatkan%20bahwa%20data%20rekam%20medis%20pasien%20dengan%20no%20rm%20<?php echo $r["no_rm"];?>,%20Atas%20Nama%20<?php echo $r["nama_pasien"];?>%20di%20<?php echo $r["nama_poli"];?>%20Tanggal%20Pinjam%20<?php echo $tgl_pinjam;?>.%20Mohon%20harap%20segera%20diretensi.%20Terima%20Kasih." target="_blank" class="badge badge-success"><i class="fa fa-whatsapp"></i></a>
+						<a title="KIRIM PESAN" href="https://wa.me/?text=Pesan%20dari%20SIPER-RM%20Puskesmas%20Jenggawah%20:%20Mengingatkan%20bahwa%20data%20rekam%20medis%20pasien%20dengan%20no%20rm%20<?php echo $r["no_rm"];?>,%20Atas%20Nama%20<?php echo $r["nama_pasien"];?>%20sudah%20diretensi .%20Mohon%20harap%20segera%20melakukan%20pelestarian%20atau%20pemusnahan.%20Terima%20Kasih." target="_blank" class="badge badge-success"><i class="fa fa-whatsapp"></i></a>
 					</td>
 				</tr>
 				<?php $nomer++; ?>
 			<?php endforeach; ?>
 		</tbody>
 	</table>
-	<button type="submit" name="hapus_data" class="btn btn-danger">Hapus Data Terpilih</button>
 </form>

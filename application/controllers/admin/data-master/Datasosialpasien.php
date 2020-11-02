@@ -49,4 +49,22 @@ class Datasosialpasien extends CI_Controller
 		redirect(base_url() . "data-sosial-pasien");
 		// echo "bisa";
 	}
+	public function edit($id)
+	{
+		$filter = array("no_urut" => $id);
+		$data["data_rm"] = $this->common->getData("*", "tb_pasien", "", $filter, "");
+		$header["title"] = "SI Peminjaman";
+		$card["title"] = " Data sosial Pasien / Edit Data";
+		$this->load->view('_partials/header', $header);
+		$this->load->view('_partials/breadcrumb', $card);
+		$this->load->view('admin/data-master/data-sosial-pasien/edit-sosial-pasien', $data);
+		$this->load->view('_partials/footer');
+	}
+	public function update()
+	{
+		$filter = array("no_urut" => $_POST["no_urut"]);
+		$this->common->update("tb_pasien", $this->input->post(), $filter);
+		$this->session->set_flashdata("success", "Berhasil Mengedit Data!!!");
+		redirect(base_url() . "data-sosial-pasien");
+	}
 }

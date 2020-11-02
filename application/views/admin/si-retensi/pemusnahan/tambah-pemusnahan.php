@@ -3,7 +3,7 @@
         <div class="col-md">
             <div class="form-group">
                 <label for="norm">No RM</label>
-                <select class="form-control js-example-basic-single" name="norm">
+                <select class="form-control" name="norm" id="norm">
                     <option disable>--Pilih No RM--</option>
                     <?php foreach ($pasien as $p) : ?>
                         <option value="<?= $p['no_rm']; ?>"><?= $p['no_rm']; ?></option>
@@ -20,17 +20,17 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md">
+	<div class="row">
+	        <div class="col-md-6">
+            <div class="form-group">
+                <label for="tanggal_kunjungan">Tanggal Kunjungan Terakhir</label>
+                <input type="date" name="tanggal_kunjungan" id="tanggal_kunjungan" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleInputEmail1">Tanggal Pemusnahan</label>
                 <input type="date" name="tanggal_pemusnahan" class="form-control">
-            </div>
-        </div>
-        <div class="col-md">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Tanggal Kunjungan Terakhir</label>
-                <input type="date" name="tanggal_kunjungan" class="form-control">
             </div>
         </div>
     </div>

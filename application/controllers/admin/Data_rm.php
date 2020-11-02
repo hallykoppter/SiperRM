@@ -13,30 +13,9 @@ class Data_rm extends CI_Controller
 
 	public function index()
 	{
+		$data['pasien'] = $this->common->getData("no_rm, nama_pasien, jenis_kelamin, tgl_lahir, alamat, status_aktif, no_urut", "tb_pasien", "", "", "");
 		$header["title"] = "SiperRM";
 		$card["title"] = " Data RM";
-		$pinjam = $this->common->getData("*", "tb_peminjaman tp", ["tb_pasien tps", "tp.no_rm=tps.no_rm", "tb_pengguna tpg", "tp.id_pengguna=tpg.id_pengguna"], ["status_data" => 1, "status_peminjaman" => 0], ["tanggal_pinjam", "desc"]);
-		$terlambat = 0;
-		foreach ($pinjam as $dataPinjam) {
-			$tgl_sekarang = date_create();
-			$pecah = explode('-', $dataPinjam['tanggal_pinjam']);
-			$tahun = $pecah[0];
-			$bulan = $pecah[1];
-			$tgl = $pecah[2];
-			$tgl2 = $tgl . "/" . $bulan . "/" . $tahun;
-			$idp = $dataPinjam["id_peminjaman"];
-			$tk = date_create($dataPinjam["tanggal_pinjam"]);
-			$keterlambatan = date_diff($tk, $tgl_sekarang);
-			$hr = $keterlambatan->format("%a");
-			if ($hr == 0 || ($hr <= 2 && $dataPinjam["pelayanan"] == 'Rawat Inap') || ($hr <= 1 && $dataPinjam["pelayanan"] == 'Rawat Jalan')) {
-				$terlambat = $terlambat;
-			} else {
-				$terlambat = $terlambat + 1;
-			}
-		}
-		$data['jml_data_terlambat'] = $terlambat;
-		$data["pasien"] = $this->common->getData("*", ["tb_pasien", 10], "", "", ["no_rm", "desc"]);
-
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
 		$this->load->view('admin/data-rm/data-rm', $data);

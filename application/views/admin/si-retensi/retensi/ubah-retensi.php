@@ -1,7 +1,7 @@
 <form action="<?= base_url('retensi-edit') ?>" method="post">
 	<input type="hidden" name="id_permintaan" value="<?= $retensi['id_permintaan']; ?>">
 	<div class="row">
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="norm">No RM</label>
 				<select class="form-control js-example-basic-single" name="norm">
@@ -16,7 +16,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Jenis Pelayanan</label>
 				<select class="form-control js-example-basic-single" name="jenis_pelayanan">
@@ -31,7 +31,7 @@
 				</select>
 			</div>
 		</div>
-		<div class="col-md">
+		<div class="col-md-6">
 			<label for="">Poli yang pinjam</label>
             <select class="form-control selectpicker" data-live-search="true" name="poli" id="">
                 <option>---Pilih Data---</option>
@@ -54,13 +54,13 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Tanggal Kunjungan</label>
 				<input type="text" name="tanggal_kunjungan" class="form-control datepicker" value="<?= $retensi['tanggal_kunjungan'] ?>">
 			</div>
 		</div>
-		<div class="col-md">
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Tanggal Pemindahan</label>
 				<input type="text" name="tanggal_pemindahan" class="form-control datepicker" value="<?= $retensi['tanggal_pemindahan'] ?>">
