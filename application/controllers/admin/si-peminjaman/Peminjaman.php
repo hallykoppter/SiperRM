@@ -18,18 +18,46 @@ class Peminjaman extends CI_Controller
 		$peminjaman = $this->common->getPeminjaman();
 		$data['peminjaman'] = [];
 		foreach ($peminjaman as $p) {
-			$tanggalPinjam = new DateTime($p["tanggal_pinjam"]);
+
+			// $tanggalPinjam = new DateTime($p["tanggal_pinjam"]);
+
+			// $awal = '2020-10-31';
+			// $a = new DateTime($awal);
+			// $b = new DateTime($time = 'now');
+			// var_dump($a);
+			// var_dump($b);
+			// $hasil = $a->diff($b)->days;
+			// var_dump($hasil);
+			// die;
+
+
+
+			$tanggalSekarang = new DateTime($time = 'now');
 			$pengembalian = $p['tgl_pengembalian'];
-			$tanggalPengembalian = new DateTime($pengembalian);
-			$keterlambatan = $tanggalPengembalian->diff($tanggalPinjam)->days;
-			if ($p['tgl_pengembalian'] == null) {
+			$Kembali = $p['tgl_kembali'];
+			$tanggalKembali = new DateTime($Kembali);
+			$keterlambatan = $tanggalKembali->diff($tanggalSekarang)->days;
+			if ($keterlambatan < 0) {
+				$keterlambatan = 0;
+			} else if ($p['tgl_pengembalian'] == null) {
 				$keterangan = "Belum Kembali";
 				$pengembalian = "-";
-				$keterlambatan = 0;
+			} else if ($p['tgl_pengembalian'] != null) {
+				$kbl = new DateTime($p['tgl_pengembalian']);
+				$keterlambatan = $tanggalKembali->diff($kbl)->days;
+
+				if ($keterlambatan < 2) {
+					$keterangan = "Kembali";
+				} else {
+					$keterangan = "Kembali/Terlambat";
+				}
 			} else if ($p['tanggal_pinjam'] == $p['tgl_pengembalian']) {
 				$keterangan = "Tepat Waktu";
 				$keterlambatan = 0;
-			} else if ($keterlambatan > 2) {
+			} else if ($p['tgl_kembali'] == $p['tgl_pengembalian']) {
+				$keterangan = 'Tepat Waktu';
+				$keterlambatan = 0;
+			} else if ($keterlambatan >= 2) {
 				$keterangan = "Terlambat";
 			}
 
@@ -84,7 +112,7 @@ class Peminjaman extends CI_Controller
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
 			'id_poli' => $_POST['poli']
 		];
-		
+
 		$this->db->insert('tb_peminjaman', $data);
 		echo "<script>alert('Data Berhasil ditambahkan')</script>";
 		echo "<script>document.location.href='$url'</script>";
