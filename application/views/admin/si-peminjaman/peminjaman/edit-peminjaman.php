@@ -5,17 +5,8 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">No Rekam Medis</label>
-                        <select name="no_rm" id="no_rm" class="form-control">
-                            <option value="">-- Pilih No RM --</option>
-                            <?php foreach ($pasien as $p) : ?>
-                                <?php if ($p['no_rm'] == $peminjaman['no_rm']) : ?>
-                                    <option value="<?= $p['no_rm']; ?>" selected><?= $p['no_rm']; ?></option>
-                                <?php else : ?>
-                                    <option value="<?= $p['no_rm']; ?>"><?= $p['no_rm']; ?></option>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </select>
+                        <label for="">Nomor Rekam Medis</label>
+                        <input type="text" class="form-control" id="no_rm" name="no_rm" value="<?= $peminjaman['no_rm'] ?>" readonly>
                     </div>
                     <div class="col-md-6">
                         <label for="">Nama Pasien</label>
@@ -25,7 +16,7 @@
                         <label for="">Pelayanan</label>
                         <input type="text" class="form-control" id="pelayanan" name="pelayanan" value="Rawat Jalan">
                     </div>
-                    
+
                     <div class="col-md-6">
                         <label for="">Tanggal Pinjam</label>
                         <input type="date" class="form-control" name="tanggal_pinjam" value="<?= $peminjaman['tanggal_pinjam'] ?>" disabled>

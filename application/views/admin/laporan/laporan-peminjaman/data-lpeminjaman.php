@@ -27,8 +27,10 @@
             <div class="form-group">
                 <?php if (isset($sampai)) : ?>
                     <input type="text" name="nama_kepala" class="form-control" placeholder="Nama Kepala Puskesmas" value="<?= $nama_kepala ?>">
+                    <input type="text" name="nip" class="form-control" placeholder="nip value=" <?= $nip ?>">
                 <?php else : ?>
                     <input type="text" name="nama_kepala" class="form-control" placeholder="Nama Kepala Puskesmas" required>
+                    <input type="text" name="nip" class="form-control" placeholder="nip" required>
                 <?php endif; ?>
             </div>
         </div>

@@ -75,9 +75,15 @@ class Data_rm extends CI_Controller
 	{
 		$filter = array("no_urut" => $id);
 		$data["data_rm"] = $this->common->getData("*", "tb_pasien", "", $filter, "");
-		$QR = $data['data_rm']['0'];
-		$qrCode = new Endroid\QrCode\QrCode($QR['no_rm']);
-		header('Content-Type: ' . $qrCode->getContentType());
-		echo $qrCode->writeString();
+		$QR['QR'] = $data['data_rm']['0'];
+		$header["title"] = "SIPER RM";
+		$card["title"] = " Data RM / QR-Code";
+		$this->load->view('_partials/header', $header);
+		$this->load->view('_partials/breadcrumb', $card);
+		$this->load->view('admin/data-rm/qrcode', $QR);
+		$this->load->view('_partials/footer');
+		// $qrCode = new Endroid\QrCode\QrCode($QR['no_rm']);
+		// header('Content-Type: ' . $qrCode->getContentType());
+		// echo $qrCode->writeString();
 	}
 }

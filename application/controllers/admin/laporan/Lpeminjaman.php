@@ -24,6 +24,7 @@ class Lpeminjaman extends CI_Controller
 				$data['sampai'] = $sampai;
 				$data['peminjaman'] = $this->loop($peminjaman);
 				$data['nama_kepala'] = $this->input->post('nama_kepala');
+				$data['nip'] = $this->input->post('nip');
 			}
 		}
 
@@ -32,13 +33,15 @@ class Lpeminjaman extends CI_Controller
 			$dari = $_POST['dari'];
 			$sampai = $_POST['sampai'];
 			$data['nama_kepala'] = $this->input->post('nama_kepala');
+			$data['nip'] = $this->input->post('nip');
 			if ($dari != null && $sampai != null) {
 				$peminjaman = $this->Common->filterPeminjaman($dari, $sampai);
 				$data['peminjaman'] = $this->loop($peminjaman);
 				$data['nama_kepala'] = $this->input->post('nama_kepala');
+				$data['nip'] = $this->input->post('nip');
 			}
 			//kirim data ke method print
-			$this->print($data['peminjaman'], $data['nama_kepala']);
+			$this->print($data['peminjaman'], $data['nama_kepala'], $data['nip']);
 		}
 
 		$data['peminjaman'] = $this->loop($peminjaman);
@@ -54,18 +57,32 @@ class Lpeminjaman extends CI_Controller
 	{
 		$data['peminjaman'] = [];
 		foreach ($peminjaman as $p) {
-			$tanggalPinjam = new DateTime($p["tanggal_pinjam"]);
+			$tanggalSekarang = new DateTime($time = 'now');
 			$pengembalian = $p['tgl_pengembalian'];
-			$tanggalPengembalian = new DateTime($pengembalian);
-			$keterlambatan = $tanggalPengembalian->diff($tanggalPinjam)->days;
-			if ($p['tgl_pengembalian'] == null) {
+			$Kembali = $p['tgl_kembali'];
+			$tanggalKembali = new DateTime($Kembali);
+			$keterlambatan = $tanggalKembali->diff($tanggalSekarang)->days;
+			if ($keterlambatan < 0) {
+				$keterlambatan = 0;
+			} else if ($p['tgl_pengembalian'] == null) {
 				$keterangan = "Belum Kembali";
 				$pengembalian = "-";
-				$keterlambatan = 0;
+			} else if ($p['tgl_pengembalian'] != null) {
+				$kbl = new DateTime($p['tgl_pengembalian']);
+				$keterlambatan = $tanggalKembali->diff($kbl)->days;
+
+				if ($keterlambatan < 2) {
+					$keterangan = "Kembali";
+				} else {
+					$keterangan = "Kembali/Terlambat";
+				}
 			} else if ($p['tanggal_pinjam'] == $p['tgl_pengembalian']) {
 				$keterangan = "Tepat Waktu";
 				$keterlambatan = 0;
-			} else if ($keterlambatan > 2) {
+			} else if ($p['tgl_kembali'] == $p['tgl_pengembalian']) {
+				$keterangan = 'Tepat Waktu';
+				$keterlambatan = 0;
+			} else if ($keterlambatan >= 2) {
 				$keterangan = "Terlambat";
 			}
 
@@ -76,6 +93,7 @@ class Lpeminjaman extends CI_Controller
 				'tanggal_pinjam' => $p['tanggal_pinjam'],
 				'tgl_kembali' => $p['tgl_kembali'],
 				'tgl_pengembalian' => $pengembalian,
+				'keterlambatan' => $keterlambatan,
 				'keterangan' => $keterangan,
 				'kelengkapan' => $p['kelengkapan']
 			];
@@ -85,10 +103,11 @@ class Lpeminjaman extends CI_Controller
 		return $data['peminjaman'];
 	}
 
-	public function print($data, $nama_kepala)
+	public function print($data, $nama_kepala, $nip)
 	{
 		$data['peminjaman'] = $data;
 		$data['nama_kepala'] = $nama_kepala;
+		$data['nip'] = $nip;
 		$date = date('d-m-Y');
 		$mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
 		$html = $this->load->view('admin/laporan/laporan-peminjaman/lpeminjaman', $data, true);
