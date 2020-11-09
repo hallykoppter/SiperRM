@@ -28,7 +28,7 @@ class Klpcm extends CI_Controller
 	{
 		$header["title"] = "SI Peminjaman";
 		$card["title"] = " KLPCM / Tambah KLPCM";
-		$data['pasien'] = $this->db->get('tb_peminjaman')->result_array();
+		$data['pasien'] = $this->db->get_where('tb_peminjaman', ['status_peminjaman' => 1])->result_array();
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
 		$this->load->view('admin/si-peminjaman/klpcm/tambah-klpcm', $data);
@@ -49,7 +49,35 @@ class Klpcm extends CI_Controller
 		$planning = $_POST['planning'];
 		$jenis_kasus = $_POST['jenis_kasus'];
 		$petugas = $_POST['petugas'];
-		$kelengkapan = $_POST['status_kelengkapan'];
+		$kelengkapan = 0;
+		if ($alergi != 1) {
+			if ($tanggal_kunjungan != 1) {
+				if ($unit_layanan != 1) {
+					if ($subjek != 0) {
+						if ($objek != 1) {
+							if ($assesment != 1) {
+								if ($planning != 1) {
+									if ($jenis_kasus != 1) {
+										if ($petugas != 0) {
+											$kelengkapan = 0;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} else {
+			$kelengkapan = 1;
+		}
+		if ($kelengkapan == 1) {
+			$kelengkapan = "Lengkap";
+		} else {
+			$kelengkapan = "Tidak Lengkap";
+		}
+
+
 
 		//insert to tabel klpcm
 		$data = [

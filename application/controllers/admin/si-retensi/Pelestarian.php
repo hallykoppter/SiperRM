@@ -15,10 +15,10 @@ class Pelestarian extends CI_Controller
 		$header["title"] = "SI Retensi";
 		$card["title"] = " Pelestarian / Tambah Pelestarian";
 		$pelestarian = $this->M_data->get_pelestarian();
-		$tanggal_skrg = new DateTime(date("d-m-y"));
+		$tanggal_skrg = new DateTime(date("Y-m-d"));
 		$data['pelestarian'] = [];
 		foreach ($pelestarian as $p) {
-			$selisih = $tanggal_skrg->diff(new DateTime($p['tanggal_pelestarian']))->days + 1;
+			$selisih = $tanggal_skrg->diff(new DateTime($p['tanggal_kunjungan']))->days + 1;
 			$lestari = [
 				'id_pelestarian' => $p['id_pelestarian'],
 				'no_rm' => $p['no_rm'],

@@ -6,7 +6,7 @@
         <form action="<?php echo base_url() . "klpcm/store" ?>" method="post">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="">No RM</label>
                         <select class="form-control" name="no_rm" id="no_rm">
                             <option>---Pilih Data---</option>
@@ -15,102 +15,229 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="">Nama Pasien</label>
                         <input type="text" class="form-control" id="nama_pasien" name="nama_pasien" value="" readonly>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="">Jenis Kelamin</label>
                         <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" value="" disabled>
                     </div>
-                    <div class="col-md-6">
+
+
+                    <div class="form-group col-md-6">
                         <label for="">Tanggal Lahir</label>
                         <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" value="" disabled>
                     </div>
-                    <br>
-                    <div class="col-md-6">
-                        <label for="kelengkapan">Kelengkapan</label>
-                        <select class="form-control" name="kelengkapan" id="">
-                            <option value="lengkap">Lengkap</option>
-                            <option value="Tidak Lengkap">Tidak Lengkap</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
+
+                    <!-- <div class=" form-group col-md-4">
+                        <label for="">kelengkapan</label>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="status_kelengkapan" value="Lengkap">
+                                    <label class="form-check-label">
+                                        Lengkap
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="status_kelengkapan" value="Tidak Lengkap">
+                                    <label class="form-check-label">
+                                        Tidak Lengkap
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group col-md-4">
                         <label for="">Nomor Rekam Medis</label>
-                        <select class="form-control" name="no_rm" id="no_rm">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" id="norm" type="radio" name="norm" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" id="norm" name="norm" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Alergi</label>
-                        <select class="form-control" name="alergi" id="alergi">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="alergi" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="alergi" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="">Alergi</label>
-                        <select class="form-control" name="alergi" id="alergi">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Tanggal Kunjungan</label>
-                        <select class="form-control" name="tanggal_kunjungan" id="tanggal_kunjungan">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Unit Layanan</label>
-                        <select class="form-control" name="unit" id="unit">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="unit_layanan" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="unit_layanan" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Subjek</label>
-                        <select class="form-control" name="subjek" id="subjek">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="subjek" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="subjek" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Objek</label>
-                        <select class="form-control" name="objek" id="objek">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="objek" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="objek" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="">Assessment</label>
-                        <select class="form-control" name="assessment" id="assessment">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                    <div class="form-group col-md-4">
+                        <label for="">Assesment</label>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="assesment" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="assesment" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Planning</label>
-                        <select class="form-control" name="planning" id="planning">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="planning" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="planning" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Jenis Kasus</label>
-                        <select class="form-control" name="jenis_kasus" id="jenis_kasus">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="jenis_kasus" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="jenis_kasus" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Nama dan Paraf Petugas</label>
-                        <select class="form-control" name="nama_paraf_pet" id="nama_paraf_pet">
-                            <option value="1">Ada</option>
-                            <option value="0">Tidak Ada</option>
-                        </select>
+                        <div class="row">
+                            <div class="form-check">
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="petugas" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="petugas" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -25,10 +25,10 @@
                 <td><?= $p['nama_pasien'] ?></td>
                 <td><?= $p['diagnosa'] ?></td>
                 <td>
-                    <?php if ($p['tanggal_pelestarian'] == "00-00-0000") : ?>
+                <?php if ($p['tanggal_pelestarian'] == "0000-00-00") : ?>
                         In Aktif
                     <?php else : ?>
-                        <?php if ($p['selisih'] >= "1825") : ?>
+                        <?php if ($p['selisih'] >= "730") : ?>
                             Dilestarikan
                         <?php else : ?>
                             In Aktif

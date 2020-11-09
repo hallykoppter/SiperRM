@@ -6,27 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-		h1.judul {
+        .logo{
+            width: 60px;
+            height: 80px;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+		h1.kop {
             text-align: center;
-			font-family: Times New Roman;
+			font-family:"Times New Roman";
 			line-height: 2px;
 			font-size: 14px;
         }
-		h2.judul {
+		h2.kop {
 			text-align: center;
-			font-family: Times New Roman;
+			font-family:"Times New Roman";
 			line-height: 1px;
 			font-size: 10px;
 		}
 
+        h1.judul{
+			text-align: center;
+			font-family: "Times New Roman";
+            font-size: 12px;
+        }
+
         table.tableisi {
+            font-family: "Times New Roman";
+            font-size: 12px;
             border-collapse: collapse;
             text-align: center;
         }
 
         .content {
             height: 800px;
-            font-family: Times New Roman;
+            font-family:"Times New Roman";
             font-size: 12px;
         }
 		hr {
@@ -35,25 +50,31 @@
 			color: black;
 		}
         .bawah{
-            position: absolute;
-            right: 5%;
-            bottom: 5%;
-            text-align: center;
+            margin-top: 10px;
+        }
+
+        .bawah tr td{
+            font-family:"Times New Roman";
+            font-size:12px;
         }
     </style>
 </head>
 
 <body>
-    <h1 class="judul">PEMERINTAH KABUPATEN JEMBER</h1>
-	<h1 class="judul">DINAS KESEHATAN</h1>
-	<h1 class="judul"><b>UPT. PUSKESMAS JENGGAWAH</b></h1>
-	<h2 class="judul">Alamat : Jl. Kawi No. 139 Telp. (0331)757118 Kec. Jenggawah, kab. Jember </h2>
+    <div class="logo">
+    <img src="Lambang_Jember.png">
+    </div>
+    <h1 class="kop">PEMERINTAH KABUPATEN JEMBER</h1>
+	<h1 class="kop">DINAS KESEHATAN</h1>
+	<h1 class="kop"><b>UPT. PUSKESMAS JENGGAWAH</b></h1>
+	<h2 class="kop">Alamat : Jl. Kawi No. 139 Telp. (0331)757118 Kec. Jenggawah, kab. Jember </h2>
 	<hr />
-    <h1 class="judul" font-size="12px" height="10px">LAPORAN PELESTARIAN</h1>
+    <h1 class="judul">LAPORAN PELESTARIAN</h1>
+    <br>
     <div class="content">
-        <table border="1" class="tableisi">
+        <table border="1" class="tableisi" cellpadding="7">
             <tr>
-                <th width="70">No RM</th>
+                <th width="70" height="30">No RM</th>
                 <th width="300">Diagnosa</th>
                 <th width="150">Tanggal Kunjungan</th>
                 <th width="150">Tanggal Pelestarian</th>
@@ -69,19 +90,23 @@
                 </tr>
             <?php endforeach; ?>
         </table>
-    </div>
-    <div class="bawah">
-        <table border="0" style="border-collapse: collapse;margin-top: 5px" align="right">
-            <tr>
-                <td>Jember, <?= date('d-m-Y') ?></td>
-            </tr>
-            <tr>
-                <td height="70px">&nbsp;</td>
-            </tr>
-            <tr>
-                <td style="text-align: center"><?= $nama_kepala; ?></td>
-            </tr>
-        </table>
+        <br>
+        <div class="bawah">
+            <table border="0" style="border-collapse: collapse" align="right">
+                <tr>
+                    <td style="text-align: center">Jember, <?= date('d-m-Y') ?></td>
+                </tr>
+                <tr>
+                    <td height="70px">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><u><?= $nama_kepala; ?></u></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><?= $nip; ?></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 

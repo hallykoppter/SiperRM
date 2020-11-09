@@ -85,10 +85,12 @@ class Common extends CI_Model
 	public function getKlpcm($no_rm = null)
 	{
 		if ($no_rm == null) {
-			$get = $this->db->query("SELECT p.id_peminjaman,p.no_rm, p.kelengkapan, p.status_data,ps.nama_pasien,ps.jenis_kelamin,ps.tgl_lahir FROM tb_klpcm as k JOIN tb_peminjaman AS p ON k.no_rm=p.no_rm JOIN tb_pasien AS ps ON p.no_rm = ps.no_rm ORDER BY id_peminjaman DESC");
+			$get = $this->db->query("SELECT p.id_peminjaman, p.no_rm, p.kelengkapan, p.status_data, ps.nama_pasien, ps.jenis_kelamin, ps.tgl_lahir FROM tb_klpcm as k JOIN tb_peminjaman AS p ON k.no_rm=p.no_rm  JOIN tb_pasien AS ps ON p.no_rm = ps.no_rm ORDER BY id_peminjaman DESC");
 			return $get->result_array();
+			// $get = $this->db->query("SELECT p.id_peminjaman, p.no_rm, p.kelengkapan, p.status_data, ps.nama_pasien, ps.jenis_kelamin, ps.tgl_lahir, p.status_peminjaman FROM tb_klpcm as k JOIN tb_peminjaman AS p ON k.no_rm=p.no_rm  JOIN tb_pasien AS ps ON p.no_rm = ps.no_rm WHERE p.status_peminjaman=1 ORDER BY id_peminjaman DESC");
+			// return $get->result_array();
 		} else {
-			$get = $this->db->query("SELECT k.*,ps.nama_pasien AS nampas,ps.jenis_kelamin,ps.tgl_lahir,p.kelengkapan FROM tb_klpcm AS k JOIN tb_pasien AS ps ON k.no_rm=ps.no_rm JOIN tb_peminjaman AS p ON k.no_rm=p.no_rm WHERE k.no_rm = '$no_rm'");
+			$get = $this->db->query("SELECT k.*, ps.nama_pasien AS nampas,ps.jenis_kelamin,ps.tgl_lahir,p.kelengkapan FROM tb_klpcm AS k JOIN tb_pasien AS ps ON k.no_rm=ps.no_rm JOIN tb_peminjaman AS p ON k.no_rm=p.no_rm WHERE k.no_rm = '$no_rm'");
 			return $get->row_array();
 		}
 	}

@@ -41,17 +41,17 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Tanggal Pemindahan</label>
-				<input type="text" name="tanggal_pemindahan" value="<?= date('Y-m-d') ?>" class="form-control datepicker" readonly>
+				<input type="text" name="tanggal_pemindahan" value="<?= date('Y-m-d')?>" class="form-control" readonly>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<label for="">Poli yang pinjam</label>
-			<select class="form-control selectpicker" data-live-search="true" name="poli" id="">
-				<option>---Pilih Data---</option>
-				<?php foreach ($poli as $p) : ?>
-					<option value="<?= $p['id_poli'] ?>"><?= $p['nama_poli'] ?></option>
-				<?php endforeach; ?>
-			</select>
+            <select class="form-control selectpicker" data-live-search="true" name="poli" id="">
+                <option>---Pilih Data---</option>
+                    <?php foreach ($poli as $p) : ?>
+                        <option value="<?= $p['id_poli'] ?>"><?= $p['nama_poli'] ?></option>
+                    <?php endforeach; ?>
+            </select>
 		</div>
 	</div>
 	<button type="submit" class="btn btn-primary">Simpan</button>

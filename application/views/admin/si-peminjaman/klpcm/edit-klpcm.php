@@ -36,383 +36,202 @@
                         <label for="">Tanggal Lahir</label>
                         <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" value="<?= $klpcm['tgl_lahir'] ?>" disabled>
                     </div>
-                    <div class="col-md-12">
-                        <label for="">kelengkapan</label>
-                        <div class="row">
-                            <div class="form-check">
-                                <?php if ($klpcm['kelengkapan'] == "Lengkap") : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="status_kelengkapan" value="Lengkap" checked>
-                                        <label class="form-check-label">
-                                            Lengkap
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="status_kelengkapan" value="Tidak Lengkap">
-                                        <label class="form-check-label">
-                                            Tidak Lengkap
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="status_kelengkapan" value="Lengkap">
-                                        <label class="form-check-label">
-                                            Lengkap
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="status_kelengkapan" value="Tidak Lengkap" checked>
-                                        <label class="form-check-label">
-                                            Tidak Lengkap
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Nomor Rekam Medis</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['no_rm'] != null) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" id="norm" type="radio" name="norm" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" id="norm" name="norm" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" id="norm" type="radio" name="norm" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" id="norm" name="norm" value="0">
-                                        <label class="form-check-label" checked>
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" id="norm" type="radio" name="norm" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" id="norm" name="norm" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Alergi</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['alergi'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="alergi" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="alergi" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="alergi" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="alergi" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="alergi" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="alergi" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Tanggal Kunjungan</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['tanggal_kunjungan'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="tanggal_kunjungan" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Unit Layanan</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['unit_layanan'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="unit_layanan" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="unit_layanan" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="unit_layanan" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="unit_layanan" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="unit_layanan" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="unit_layanan" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Subjek</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['subjek'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="subjek" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="subjek" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="subjek" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="subjek" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="subjek" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="subjek" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Objek</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['objek'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="objek" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="objek" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="objek" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="objek" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="objek" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="objek" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Assesment</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['assesment'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="assesment" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="assesment" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="assesment" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="assesment" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="assesment" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="assesment" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Planning</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['planning'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="planning" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="planning" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="planning" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="planning" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="planning" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="planning" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Jenis Kasus</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['jenis_kasus'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="jenis_kasus" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="jenis_kasus" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="jenis_kasus" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="jenis_kasus" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="jenis_kasus" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="jenis_kasus" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="form-group col-md-4">
                         <label for="">Nama dan Paraf Petugas</label>
                         <div class="row">
                             <div class="form-check">
-                                <?php if ($klpcm['nama_paraf_pet'] == 1) : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="petugas" value="1" checked>
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="petugas" value="0">
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="petugas" value="1">
-                                        <label class="form-check-label">
-                                            Ada
-                                        </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input class="form-check-input" type="radio" name="petugas" value="0" checked>
-                                        <label class="form-check-label">
-                                            Tidak ada
-                                        </label>
-                                    </div>
-                                <?php endif; ?>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="petugas" value="1">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-check-input" type="radio" name="petugas" value="0">
+                                    <label class="form-check-label">
+                                        Tidak ada
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
+</div>
 </div>
