@@ -53,6 +53,21 @@ class Common extends CI_Model
 		return $sql->result_array();
 	}
 
+	public function getDataIndexRM()
+	{
+		$query = "SELECT p.*, pn.tanggal_pinjam FROM tb_pasien AS p LEFT JOIN tb_peminjaman AS pn ON p.no_rm=pn.no_rm";
+		$get = $this->db->query($query)->result_array();
+		return $get;
+	}
+
+	public function filterDataRMexpDateNull()
+	{
+
+		$query = "SELECT p.*, pn.tanggal_pinjam FROM tb_pasien AS p JOIN tb_peminjaman AS pn ON p.no_rm=pn.no_rm WHERE p.status_aktif=1";
+		$get = $this->db->query($query)->result_array();
+		return $get;
+	}
+
 	// public function hapus_data($where, $table){
 	// 	$this->db->where($where);
 	// 	$this->db->delete($table);	

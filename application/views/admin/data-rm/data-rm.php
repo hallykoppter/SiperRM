@@ -8,7 +8,7 @@
         <th>Nama Pasien</th>
         <th>Jenis Kelamin</th>
         <th>Tanggal Lahir</th>
-        <th>Umur</th>
+        <th>Tanggal Kunjungan</th>
         <th>Alamat</th>
         <?php if ($this->session->userdata('level') == 'admin') : ?>
             <th>Status Data</th>
@@ -25,7 +25,7 @@
             <th>Nama Pasien</th>
             <th>Jenis Kelamin</th>
             <th>Tanggal Lahir</th>
-            <th>Umur</th>
+            <th>Tanggal Kunjungan</th>
             <th>Alamat</th>
             <?php if ($this->session->userdata('level') == 'admin') : ?>
                 <th width="20%">Status Data</th>
@@ -39,27 +39,35 @@
     <tbody>
         <?php
         $no = 1;
-        function umur($tgl_lahir)
-        {
 
-            // ubah ke format Ke Date Time
-            $lahir = new DateTime($tgl_lahir);
-            $hari_ini = new DateTime();
-            if ($lahir == $hari_ini || $lahir == new DateTime("0000-00-00")) {
-                echo "0 Tahun 0 Bulan 0 Hari";
-            } else {
-                $diff = $hari_ini->diff($lahir);
+        // Ini fungsi untuk membuat umur
 
-                // Display
-                echo $diff->y . " Tahun";
-                echo " " . $diff->m . " Bulan";
-                echo " " . $diff->d . " Hari";
-            }
-        }
+        // function umur($tgl_lahir)
+        // {
+
+        //     // ubah ke format Ke Date Time
+        //     $lahir = new DateTime($tgl_lahir);
+        //     $hari_ini = new DateTime();
+        //     if ($lahir == $hari_ini || $lahir == new DateTime("0000-00-00")) {
+        //         echo "0 Tahun 0 Bulan 0 Hari";
+        //     } else {
+        //         $diff = $hari_ini->diff($lahir);
+
+        //         // Display
+        //         echo $diff->y . " Tahun";
+        //         echo " " . $diff->m . " Bulan";
+        //         echo " " . $diff->d . " Hari";
+        //     }
+        // }
 
         foreach ($pasien as $item) {
         ?>
-            <tr>
+            <?php if ($item['status_aktif'] == 1) {
+                $style = "";
+            } else {
+                $style = "class='table-danger'";
+            } ?>
+            <tr <?= $style; ?>>
                 <td><?php echo $no ?></td>
                 <td><?php echo $item["no_rm"] ?></td>
                 <td><?php echo $item["nama_pasien"] ?></td>
@@ -70,13 +78,10 @@
                         echo "Perempuan";
                     }
 
-                    ?></td>
-                <td><?php echo $item["tgl_lahir"] ?></td>
-                <td>
-                    <?php
-                    umur($item["tgl_lahir"]);
                     ?>
                 </td>
+                <td><?php echo $item["tgl_lahir"] ?></td>
+                <td><?= $item['tanggal_pinjam'] ?></td>
                 <td><?php echo $item["alamat"] ?></td>
                 <?php if ($this->session->userdata('level') == 'admin') : ?>
                     <td width="20%">
@@ -88,14 +93,14 @@
                     </td>
                     <td>
                         <a href="<?php echo base_url("data-rm/edit/") . $item["no_urut"] ?>" class="badge badge-primary"><span class="fas fa-edit fa-sm"></span></a>
-                        <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-delete fa-sm"></span></a>
+                        <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-trash-alt fa-sm"></span></a>
                         <a href="<?php echo base_url("data-rm/qrcode/") . $item["no_urut"] ?>" class="badge badge-success"><span class="fas fa-qrcode fa-sm"></span></a>
                     </td>
                 <?php endif; ?>
                 <?php if ($this->session->userdata('level') == 'petugas rm') : ?>
                     <td>
                         <a href="<?php echo base_url("data-rm/edit/") . $item["no_urut"] ?>" class="badge badge-primary"><span class="fas fa-edit fa-sm"></span></a>
-                        <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-delete fa-sm"></span></a>
+                        <a href="<?php echo base_url("data-rm/delete/") . $item["no_urut"] ?>" class="badge badge-danger"><span class="fas fa-trash-alt fa-sm"></span></a>
                         <a href="<?php echo base_url("data-rm/qrcode/") . $item["no_urut"] ?>" class="badge badge-success"><span class="fas fa-qrcode fa-sm"></span></a>
                     </td>
                 <?php endif; ?>

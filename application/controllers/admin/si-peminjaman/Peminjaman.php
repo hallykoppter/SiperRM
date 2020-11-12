@@ -14,24 +14,9 @@ class Peminjaman extends CI_Controller
 	{
 		$header["title"] = "SI Peminjaman";
 		$card["title"] = " Peminjaman / Data Peminjaman";
-		// $data["peminjaman"] = $this->common->getData("*", "tb_peminjaman p", ["tb_pasien ps", "p.no_rm=ps.no_rm", "tb_dokter d", "p.no_sip_dokter=d.no_sip"], "", "", "");
 		$peminjaman = $this->common->getPeminjaman();
 		$data['peminjaman'] = [];
 		foreach ($peminjaman as $p) {
-
-			// $tanggalPinjam = new DateTime($p["tanggal_pinjam"]);
-
-			// $awal = '2020-10-31';
-			// $a = new DateTime($awal);
-			// $b = new DateTime($time = 'now');
-			// var_dump($a);
-			// var_dump($b);
-			// $hasil = $a->diff($b)->days;
-			// var_dump($hasil);
-			// die;
-
-
-
 			$tanggalSekarang = new DateTime($time = 'now');
 			$pengembalian = $p['tgl_pengembalian'];
 			$Kembali = $p['tgl_kembali'];
@@ -99,21 +84,27 @@ class Peminjaman extends CI_Controller
 		$query = $this->db->query("SELECT * FROM `tb_peminjaman` ORDER BY id_peminjaman DESC LIMIT 1")->row_array();
 		$id_peminjaman = $query['id_peminjaman'];
 		$url = base_url('peminjaman');
+
+		// menambahkan dua tahun untuk exp_date
+		$wA = $_POST['tanggal_pinjam'];
+		$exp_date = date('Y-m-d', strtotime('+2 Years', strtotime($wA)));
 		$data = [
 			'id_peminjaman' => (int)$id_peminjaman + 1,
 			'no_rm' => $_POST['no_rm'],
 			'pelayanan' => $_POST['pelayanan'],
-
 			'tanggal_pinjam' => $_POST['tanggal_pinjam'],
 			'tgl_kembali' => $_POST['tgl_kembali'],
 			'tgl_pengembalian' => null,
 			'status_peminjaman' => 0,
 			'status_data' => 1,
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
-			'id_poli' => $_POST['poli']
+			'id_poli' => $_POST['poli'],
 		];
 
 		$this->db->insert('tb_peminjaman', $data);
+		$this->db->set('exp_date', $exp_date);
+		$this->db->where('no_rm', $_POST['no_rm']);
+		$this->db->update('tb_pasien');
 		echo "<script>alert('Data Berhasil ditambahkan')</script>";
 		echo "<script>document.location.href='$url'</script>";
 	}

@@ -12,14 +12,18 @@ if ($this->session->userdata('level') == null) {
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
+	<link rel="icon" href="<?= base_url('uploads/favicon.png') ?>" type="image/x-icon">
 	<title><?php echo $title ?></title>
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>css/styles.css" rel="stylesheet" />
 	<link href="<?= base_url() ?>assets/sb-admin/webcam/css/style.css" rel="stylesheet">
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>assets/demo/datatables-demo.js" rel="stylesheet" />
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>js/custom/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
-	<link href="<?php echo base_url() . "assets/font-awesome/css/" ?>font-awesome.min.css" rel="stylesheet" />
+	<!-- font awesome -->
+	<link rel="stylesheet" href="<?= base_url('assets/fontawesome-free/css/all.min.css'); ?>">
+	<!-- end fontawesome -->
+	<!-- <link href="<?php echo base_url() . "assets/font-awesome/css/" ?>font-awesome.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="<?= base_url('assets/font-awesome/css/font-awesome.css') ?>">
-	<!-- <script src="<?php echo base_url() . "assets/font-awesome/" ?>all.min.js" crossorigin="anonymous"></script> -->
+	<script src="<?php echo base_url() . "assets/font-awesome/" ?>all.min.js" crossorigin="anonymous"></script> -->
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>css/select2.min.css" rel="stylesheet" />
 	<link href="<?php echo base_url() . "assets/" ?>bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() . "assets/sb-admin/dist/" ?>css/custom.css" rel="stylesheet" />

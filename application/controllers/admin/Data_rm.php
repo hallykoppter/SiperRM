@@ -13,7 +13,15 @@ class Data_rm extends CI_Controller
 
 	public function index()
 	{
-		$data['pasien'] = $this->common->getData("no_rm, nama_pasien, jenis_kelamin, tgl_lahir, alamat, status_aktif, no_urut", "tb_pasien", "", "", "");
+		$data['filter'] = $this->common->filterDataRMexpDateNull();
+		foreach ($data['filter'] as $p) {
+			$waktuSekarang = date('Y-m-d');
+
+			$this->db->set('status_aktif', 0);
+			$this->db->where('exp_date', $waktuSekarang);
+			$this->db->update('tb_pasien');
+		}
+		$data['pasien'] = $this->common->getDataIndexRM();
 		$header["title"] = "SiperRM";
 		$card["title"] = " Data RM";
 		$this->load->view('_partials/header', $header);

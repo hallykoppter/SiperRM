@@ -41,3 +41,20 @@ $("#norm").on("click", function () {
 	});
 	return false;
 });
+
+$("#nomor").on("click", function () {
+	var no_rm = $("#nomor").val();
+	console.log(no_rm);
+	var url = "http://localhost/SiperRM/tglpinjam";
+	$.ajax({
+		url: url,
+		method: "POST",
+		data: { no_rm: no_rm },
+		async: true,
+		dataType: "json",
+		success: function (data) {
+			$("#tanggal_pinjam").val(data.tanggal_pinjam);
+		},
+	});
+	return false;
+});

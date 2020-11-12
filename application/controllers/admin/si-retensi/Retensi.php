@@ -37,8 +37,8 @@ class Retensi extends CI_Controller
 		$header["title"] = "Tambah Retensi";
 		$card["title"] = " Retensi / Tambah Retensi";
 		$data['poli'] = $this->db->get('tb_poli')->result_array();
-		$this->db->select('no_rm, nama_pasien');
-		$data['pasien'] = $this->db->get('tb_pasien')->result_array();
+		$query = "SELECT p.no_rm, p.nama_pasien, pn.tanggal_pinjam FROM tb_pasien AS p LEFT JOIN tb_peminjaman AS pn ON p.no_rm=pn.no_rm WHERE p.status_aktif=0";
+		$data['pasien'] = $this->db->query($query)->result_array();
 		$data['jenis_pelayanan'] = $this->db->get('tb_poli')->result_array();
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
@@ -54,7 +54,7 @@ class Retensi extends CI_Controller
 		$tglPemindahan = new DateTime($_POST["tanggal_pemindahan"]);
 		$tglkunjugan = new DateTime($_POST["tanggal_kunjungan"]);
 		$diff = $tglPemindahan->diff($tglkunjugan);
-		if (2> $diff->y) {
+		if (2 > $diff->y) {
 			$id_status = 2;
 			$status_pengembalian = 1;
 		} else {
@@ -110,7 +110,7 @@ class Retensi extends CI_Controller
 		$tglkunjugan = new DateTime($_POST["tanggal_kunjungan"]);
 		$diff = $tglPemindahan->diff($tglkunjugan);
 		// print_r($diff->y);
-		if (2> $diff->y) {
+		if (2 > $diff->y) {
 			$id_status = 2;
 			$status_pengembalian = 1;
 		} else {
@@ -131,11 +131,20 @@ class Retensi extends CI_Controller
 			'tanggal_kunjungan' => date("Y-m-d", strtotime($_POST['tanggal_kunjungan'])),
 			'tanggal_pemindahan' => date("Y-m-d", strtotime($_POST['tanggal_pemindahan'])),
 		];
-		
+
 
 		$this->db->where('id_permintaan', $id_permintaan);
 		$this->db->update('tb_permintaan', $data);
 		echo "<script>alert('Data Berhasil diubah')</script>";
 		echo "<script>document.location.href='$url'</script>";
+	}
+
+	public function tglpinjam()
+	{
+		$no_rm = $_POST['nomor'];
+		$this->db->select('no_rm, tanggal_pinjam');
+		$this->db->where('no_rm', $no_rm);
+		$pasien = $this->db->get('tb_peminjaman')->row_array();
+		echo json_encode($pasien);
 	}
 }

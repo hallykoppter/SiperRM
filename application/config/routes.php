@@ -54,6 +54,10 @@ $route['default_controller'] = 'authlogin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//routes ini nanti dihapus saja. karena ini hanya nyoba
+$route['hanya-nyoba'] = "admin/Data_rm/iniHanyaNyoba";
+// end of routes nyoba
+
 $route['dashboard'] = 'welcome';
 $route['getchart'] = 'welcome/peminjaman_chart';
 $route['data-rm'] = 'admin/Data_rm';
@@ -104,6 +108,7 @@ $route['peminjaman/edit'] = 'admin/si-peminjaman/Peminjaman/edit';
 $route['peminjaman-delete/(:any)'] = 'admin/si-peminjaman/Peminjaman/delete/$1';
 $route['pasien'] = 'admin/si-peminjaman/Peminjaman/pasien';
 $route['permintaan'] = 'admin/si-retensi/Pelestarian/permintaan';
+$route['tglpinjam'] = 'admin/si-retensi/Retensi/tglpinjam';
 $route['pengembalian'] = 'admin/si-peminjaman/Pengembalian';
 $route['pengguna'] = 'admin/data-master/Pengguna';
 $route['pengguna/input'] = 'admin/data-master/Pengguna/input';
