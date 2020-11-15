@@ -83,6 +83,7 @@ $route['pemusnahan/delete/(:any)'] = 'admin/si-retensi/Pemusnahan/delete/$1';
 $route['retensi'] = 'admin/si-retensi/Retensi';
 $route['retensi-post'] = 'admin/si-retensi/Retensi/post';
 $route['retensi-add'] = 'admin/si-retensi/Retensi/tambah';
+$route['retensi-add/(:any)'] = 'admin/si-retensi/Retensi/addById/$1';
 $route['retensi-store'] = 'admin/si-retensi/Retensi/store';
 $route['retensi-delete/(:any)'] = 'admin/si-retensi/Retensi/delete/$1';
 $route['retensi-update/(:any)'] = 'admin/si-retensi/Retensi/update/$1';

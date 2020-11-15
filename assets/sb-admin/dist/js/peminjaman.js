@@ -53,7 +53,7 @@ $("#nomor").on("click", function () {
 		async: true,
 		dataType: "json",
 		success: function (data) {
-			$("#tanggal_pinjam").val(data.tanggal_pinjam);
+			$("#tanggal_kunjungan").val(data.tanggal_pinjam);
 		},
 	});
 	return false;

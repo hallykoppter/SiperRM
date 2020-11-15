@@ -1,4 +1,4 @@
-<a href="<?php echo base_url() . "klpcm/input" ?>" class="float-right tombol btn btn-primary">Tambah Data</a>
+<button href="<?php echo base_url() . "klpcm/input" ?>" class="float-right tombol btn btn-primary">Tambah Data</button>
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead>
         <th>#</th>
@@ -40,8 +40,8 @@
                     <?php endif; ?>
                 </td>
                 <td>
-                    <a href="<?php echo base_url('klpcm/delete/' . $val['no_rm']) ?>" class="btn btn-danger" onclick="return confirm('yakin ingin menghapus?')"><i class="fa fa-trash sm"></i></a>
-                    <a href="<?php echo base_url('klpcm/update/' . $val['no_rm']) ?>" class="btn btn-warning"><i class="fa fa-edit sm"></i></a>
+                    <button href="<?php echo base_url('klpcm/delete/' . $val['no_rm']) ?>" class="btn btn-danger" onclick="return confirm('yakin ingin menghapus?')"><i class="fa fa-trash sm"></i>Hapus</button>
+                    <button href="<?php echo base_url('klpcm/update/' . $val['no_rm']) ?>" class="btn btn-warning"><i class="fa fa-edit sm"></i>Edit</button>
                 </td>
             </tr>
             <?php $nomer++; ?>

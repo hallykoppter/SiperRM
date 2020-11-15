@@ -30,6 +30,22 @@
             </div>
         </div>
     </div>
+    <div class="row">
+		<div class="col-md">
+			<div class="form-group">
+				<label for="scan">Scan RM</label>
+				<select class="form-control js-example-basic-single" name="scan" value="<?= $pemusnahan['scan']?>">
+                <?php
+                        $l = ($pemusnahan["scan"] == "0") ? "selected" : "";
+                        $p = ($pemusnahan["scan"] == "1") ? "selected" : "";
+                        ?>
+                        <option disable>--Pilih Keterangan--</option>
+                        <option <?php echo $l ?> value="0">Belum Scan</option>
+                        <option <?php echo $p ?> value="1">Sudah Scan</option>
+                </select>
+			</div>
+		</div>
+	</div>
     <button type="submit" class="btn btn-primary">Simpan</button>
     <a href="<?= base_url('pemusnahan') ?>" class="btn btn-secondary">Kembali</a>
 </form>

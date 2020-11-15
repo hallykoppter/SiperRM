@@ -37,6 +37,22 @@
 				<input type="text" name="keterangan" id="keterangan" class="form-control" value="<?= $pelestarian['keterangan'] ?>">
 			</div>
 		</div>
+    </div>
+    <div class="row">
+		<div class="col-md">
+			<div class="form-group">
+				<label for="scan">Scan RM</label>
+				<select class="form-control js-example-basic-single" name="scan" value="<?= $pelestarian['scan']?>">
+                <?php
+                        $l = ($pelestarian["scan"] == "0") ? "selected" : "";
+                        $p = ($pelestarian["scan"] == "1") ? "selected" : "";
+                        ?>
+                        <option disable>--Pilih Keterangan--</option>
+                        <option <?php echo $l ?> value="0">Belum Scan</option>
+                        <option <?php echo $p ?> value="1">Sudah Scan</option>
+                </select>
+			</div>
+		</div>
 	</div>
     <button type="submit" class="btn btn-primary">Simpan</button>
     <a href="<?= base_url('pelestarian') ?>" class="btn btn-secondary">Kembali</a>

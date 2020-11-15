@@ -6,6 +6,7 @@
         <th>Diagnosa</th>
         <th>Status Data</th>
         <th>Keterangan</th>
+        <th>Status Scan</th>
         <th>Action</th>
     </thead>
     <tfoot>
@@ -15,6 +16,7 @@
             <th>Diagnosa</th>
             <th>Status Data</th>
             <th>Keterangan</th>
+            <th>Status Scan</th>
             <th>Action</th>
         </tr>
     </tfoot>
@@ -37,8 +39,16 @@
 				</td>
                 <td><?= $p['keterangan'] ?></td>
                 <td>
-                    <a href="<?php echo base_url('pelestarian/edit/' . $p['id_pelestarian']) ?>" class="btn btn-warning text-white">Edit</a>
-                    <a href="<?php echo base_url('pelestarian/delete/' . $p['id_pelestarian']) ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
+                    <?php if ($p['scan'] == "0") : ?>
+                        Belum Scan
+                    <?php else : ?>
+                        Sudah Scan
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <a title="Edit" href="<?php echo base_url('pelestarian/edit/' . $p['id_pelestarian']) ?>" class="badge badge-warning" id="tombolEdit" style="color: white;"><i class="fa fa-edit"></i></a>
+                    <a title="Hapus" href="<?php echo base_url('pelestarian/delete/' . $p['id_pelestarian']) ?>" class="badge badge-danger" onclick="return confirm('Yakin ingin menghapus data?')"><i class="fa fa-trash"></i></a>
+                    <a title="Scan" href="<?php echo base_url('alih-media') ?>" class="badge badge-primary" style="color: white;"><i class="fas fa-file-image"></i></a>
                 </td>
             </tr>
         <?php endforeach; ?>

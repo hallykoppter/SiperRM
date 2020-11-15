@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .logo {
+            width: 60px;
+            height: 80px;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+
         h1.judul {
             text-align: center;
             font-family: Times New Roman;
@@ -46,18 +54,21 @@
             font-size: 12px;
         }
 
-        .bawah{
+        .bawah {
             margin-top: 10px;
         }
 
-        .bawah tr td{
-            font-family:"Times New Roman";
-            font-size:12px;
+        .bawah tr td {
+            font-family: "Times New Roman";
+            font-size: 12px;
         }
     </style>
 </head>
 
 <body>
+    <div class="logo">
+        <img src="Lambang_Jember.png">
+    </div>
     <h1 class="judul">PEMERINTAH KABUPATEN JEMBER</h1>
     <h1 class="judul">DINAS KESEHATAN</h1>
     <h1 class="judul"><b>UPT. PUSKESMAS JENGGAWAH</b></h1>
@@ -85,7 +96,7 @@
         </table>
         <br>
         <div class="bawah">
-            <table border="0" style="border-collapse: collapse" align="right">
+            <table border="0" align="right">
                 <tr>
                     <td style="text-align: center">Jember, <?= date('d-m-Y') ?></td>
                 </tr>
@@ -93,7 +104,10 @@
                     <td height="70px">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td style="text-align: center"><?= $nama_kepala; ?></td>
+                    <td style="text-align: center"><u><?= $nama_kepala; ?></u></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><?= $nip; ?></td>
                 </tr>
             </table>
         </div>

@@ -34,6 +34,18 @@
             </div>
         </div>
     </div>
+    <div class="row">
+		<div class="col-md">
+			<div class="form-group">
+				<label for="scan">Scan RM</label>
+				<select class="form-control js-example-basic-single" name="scan">
+                    <option disable>--Pilih Keterangan--</option>
+                    <option value="0">Belum Scan</option>
+                    <option value="1">Sudah Scan</option>
+                </select>
+			</div>
+		</div>
+	</div>
     <button type="submit" class="btn btn-primary">Simpan</button>
     <a href="<?= base_url('pemusnahan') ?>" class="btn btn-secondary">Kembali</a>
 </form>

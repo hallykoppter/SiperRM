@@ -2,13 +2,8 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
-				<label for="no_rm">No RM</label>
-				<select class="form-control" name="no_rm" id="nomor">
-					<option disable>--Pilih No RM--</option>
-					<?php foreach ($pasien as $p) : ?>
-						<option value="<?= $p['no_rm']; ?>"><?= $p['no_rm']; ?></option>
-					<?php endforeach; ?>
-				</select>
+				<label for="no_rm">Nomor RM</label>
+				<input name="no_rm" id="no_rm" type="text" value="<?= $pasien['no_rm']; ?>">
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -34,8 +29,8 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">
-				<label for="tanggal_kunjungan">Tanggal Kunjungan Terakhir</label>
-				<input type="date" name="tanggal_kunjungan" id="tanggal_kunjungan" class="form-control datepicker">
+				<label for="exampleInputEmail1">Tanggal Kunjungan Terakhir</label>
+				<input type="date" name="tanggal_kunjungan" id="tanggal_kunjungan" class="form-control datepicker" value="<?= $pasien['tanggal_pinjam']; ?>" readonly>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -44,7 +39,7 @@
 				<input type="date" name="tanggal_pemindahan" value="<?= date('Y-m-d') ?>" class="form-control" readonly>
 			</div>
 		</div>
-		<!-- <div class="col-md-6">
+		<div class="col-md-6">
 			<label for="">Poli yang pinjam</label>
 			<select class="form-control selectpicker" data-live-search="true" name="poli" id="">
 				<option>---Pilih Data---</option>
@@ -52,8 +47,8 @@
 					<option value="<?= $p['id_poli'] ?>"><?= $p['nama_poli'] ?></option>
 				<?php endforeach; ?>
 			</select>
-		</div> -->
+		</div>
 	</div>
 	<button type="submit" class="btn btn-primary">Simpan</button>
-	<a href="<?= base_url('retensi') ?>" class="btn btn-secondary">Kembali</a>
+	<a href="<?= base_url('data-rm') ?>" class="btn btn-secondary">Kembali</a>
 </form>

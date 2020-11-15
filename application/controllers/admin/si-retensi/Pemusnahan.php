@@ -25,6 +25,7 @@ class Pemusnahan extends CI_Controller
 				'nama_pasien' => $p['nama_pasien'],
 				'diagnosa' => $p['diagnosa'],
 				'tanggal_pemusnahan' => $p['tanggal_pemusnahan'],
+				'scan' => $p['scan'],
 				'selisih' => $selisih
 			];
 			array_push($data['pemusnahan'], $musnah);
@@ -54,6 +55,7 @@ class Pemusnahan extends CI_Controller
 			'diagnosa' => $this->input->post('diagnosa'),
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
 			'id_status' => 1,
+			'scan' => $this->input->post('scan'),
 			'tanggal_kunjungan' => $this->input->post('tanggal_kunjungan'),
 			'tanggal_pemusnahan' => $this->input->post('tanggal_pemusnahan')
 		];
@@ -84,6 +86,7 @@ class Pemusnahan extends CI_Controller
 			'diagnosa' => $this->input->post('diagnosa'),
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
 			'id_status' => 1,
+			'scan' => $this->input->post('scan'),
 			'tanggal_kunjungan' => $this->input->post('tanggal_kunjungan'),
 			'tanggal_pemusnahan' => $this->input->post('tanggal_pemusnahan')
 		];

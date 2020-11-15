@@ -37,8 +37,9 @@ class Retensi extends CI_Controller
 		$header["title"] = "Tambah Retensi";
 		$card["title"] = " Retensi / Tambah Retensi";
 		$data['poli'] = $this->db->get('tb_poli')->result_array();
-		$query = "SELECT p.no_rm, p.nama_pasien, pn.tanggal_pinjam FROM tb_pasien AS p LEFT JOIN tb_peminjaman AS pn ON p.no_rm=pn.no_rm WHERE p.status_aktif=0";
+		$query = "SELECT p.no_rm, p.nama_pasien FROM tb_pasien AS p WHERE p.status_aktif=0";
 		$data['pasien'] = $this->db->query($query)->result_array();
+		$data['tanggal_kunjungan'] = $this->db->get('tb_peminjaman')->result_array();
 		$data['jenis_pelayanan'] = $this->db->get('tb_poli')->result_array();
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
@@ -141,10 +142,25 @@ class Retensi extends CI_Controller
 
 	public function tglpinjam()
 	{
-		$no_rm = $_POST['nomor'];
-		$this->db->select('no_rm, tanggal_pinjam');
+		$no_rm = $_POST['no_rm'];
+		$this->db->select('no_rm, tanggal_kunjungan');
 		$this->db->where('no_rm', $no_rm);
 		$pasien = $this->db->get('tb_peminjaman')->row_array();
 		echo json_encode($pasien);
+	}
+
+	public function addById($id)
+	{
+		$query = "SELECT p.no_rm, pn.tanggal_pinjam FROM tb_pasien AS p JOIN tb_peminjaman AS pn ON p.no_rm=pn.no_rm WHERE p.no_rm=$id";
+		$i = $this->db->query($query)->result_array();
+		$data['pasien'] = $i['0'];
+		$header["title"] = "Tambah Retensi";
+		$card["title"] = " Retensi / Tambah Retensi";
+		$data['poli'] = $this->db->get('tb_poli')->result_array();
+		$data['jenis_pelayanan'] = $this->db->get('tb_poli')->result_array();
+		$this->load->view('_partials/header', $header);
+		$this->load->view('_partials/breadcrumb', $card);
+		$this->load->view('admin/si-retensi/retensi/addById', $data);
+		$this->load->view('_partials/footer');
 	}
 }
