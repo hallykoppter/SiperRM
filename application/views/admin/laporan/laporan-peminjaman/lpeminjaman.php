@@ -89,7 +89,7 @@
                     <td height="50"><?= $p['no_rm'] ?></td>
                     <td><?= $p['nama_pasien'] ?></td>
                     <td><?= $p['nama_poli'] ?></td>
-                    <td><?= $p['tanggal_pinjam'] ?></td>
+                    <td><?php echo date('d F Y', strtotime($p['tanggal_pinjam'])); ?></td>
                     <td><?= $p['keterangan'] ?></td>
                 </tr>
             <?php endforeach; ?>

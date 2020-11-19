@@ -6,29 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .logo{
+        .logo {
             width: 60px;
             height: 80px;
             position: absolute;
             left: 100px;
             top: 50px;
         }
-		h1.kop {
-            text-align: center;
-			font-family:"Times New Roman";
-			line-height: 2px;
-			font-size: 14px;
-        }
-		h2.kop {
-			text-align: center;
-			font-family:"Times New Roman";
-			line-height: 1px;
-			font-size: 10px;
-		}
 
-        h1.judul{
-			text-align: center;
-			font-family: "Times New Roman";
+        h1.kop {
+            text-align: center;
+            font-family: "Times New Roman";
+            line-height: 2px;
+            font-size: 14px;
+        }
+
+        h2.kop {
+            text-align: center;
+            font-family: "Times New Roman";
+            line-height: 1px;
+            font-size: 10px;
+        }
+
+        h1.judul {
+            text-align: center;
+            font-family: "Times New Roman";
             font-size: 12px;
         }
 
@@ -41,34 +43,36 @@
 
         .content {
             height: 800px;
-            font-family:"Times New Roman";
+            font-family: "Times New Roman";
             font-size: 12px;
         }
-		hr {
-			height: 2px;
-			border:2px;
-			color: black;
-		}
-        .bawah{
+
+        hr {
+            height: 2px;
+            border: 2px;
+            color: black;
+        }
+
+        .bawah {
             margin-top: 10px;
         }
 
-        .bawah tr td{
-            font-family:"Times New Roman";
-            font-size:12px;
+        .bawah tr td {
+            font-family: "Times New Roman";
+            font-size: 12px;
         }
     </style>
 </head>
 
 <body>
     <div class="logo">
-    <img src="Lambang_Jember.png">
+        <img src="Lambang_Jember.png">
     </div>
     <h1 class="kop">PEMERINTAH KABUPATEN JEMBER</h1>
-	<h1 class="kop">DINAS KESEHATAN</h1>
-	<h1 class="kop"><b>UPT. PUSKESMAS JENGGAWAH</b></h1>
-	<h2 class="kop">Alamat : Jl. Kawi No. 139 Telp. (0331)757118 Kec. Jenggawah, kab. Jember </h2>
-	<hr />
+    <h1 class="kop">DINAS KESEHATAN</h1>
+    <h1 class="kop"><b>UPT. PUSKESMAS JENGGAWAH</b></h1>
+    <h2 class="kop">Alamat : Jl. Kawi No. 139 Telp. (0331)757118 Kec. Jenggawah, kab. Jember </h2>
+    <hr />
     <h1 class="judul">LAPORAN PELESTARIAN</h1>
     <br>
     <div class="content">
@@ -84,8 +88,8 @@
                 <tr>
                     <td height="30"><?= $p['no_rm'] ?></td>
                     <td align="left"><?= $p['diagnosa'] ?></td>
-                    <td><?= $p['tanggal_kunjungan'] ?></td>
-                    <td><?= $p['tanggal_pelestarian'] ?></td>
+                    <td><?php echo date('d F Y', strtotime($p['tanggal_kunjungan'])); ?></td>
+                    <td><?php echo date('d F Y', strtotime($p['tanggal_pelestarian'])); ?></td>
                     <td><?= $p['keterangan'] ?></td>
                 </tr>
             <?php endforeach; ?>

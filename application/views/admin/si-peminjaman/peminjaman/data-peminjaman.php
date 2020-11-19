@@ -1,7 +1,7 @@
 <a href="<?php echo base_url() . "peminjaman/input" ?>" class="float-right tombol btn btn-primary">Tambah Data</a>
 <?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas rm') {
 ?>
-    <a href="<?php echo base_url() . "peminjaman/cetak_tracer" ?>" class="float-right tombol btn btn-warning text-white mr-2">Cetak Tracer</a>
+    <a href="<?php echo base_url() . "peminjaman/cetak_tracer" ?>" class="float-right tombol btn btn-warning text-white mr-2" onclick="return confirm('Cetak Tracer?')">Cetak Tracer</a>
 <?php } ?>
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead>
@@ -60,9 +60,9 @@
                 <?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas rm') {
                 ?>
                     <td>
-                        <a href="<?= base_url('peminjaman-delete/' . $val['id_peminjaman']) ?>" class="badge badge-danger" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash sm"></i></a>
-                        <a href="<?= base_url('peminjaman-update/' . $val['id_peminjaman']) ?>" class="badge badge-warning"><i class="fa fa-edit sm"></i></a>
-                        <a class="badge badge-success" title="KIRIM PESAN" href="https://wa.me/?text=Pesan%20dari%20Puskesmas%20Jenggawah%20:%20Mengingatkan%20bahwa%20data%20rekam%20medis%20pasien%20dengan%20no%20rm%20<?php echo $val["no_rm"]; ?>,%20Atas%20Nama%20<?php echo $val["nama_pasien"]; ?>%20di%20<?php echo $val["nama_poli"]; ?>%20Tanggal%20Pinjam%20<?php print_r($tgl_pinjam); ?>.%20Mohon%20harap%20segera%20dikembalikan.%20Terima%20Kasih." target="_blank"><i class="fab fa-whatsapp fa-sm"></i></a>
+                        <a href="<?= base_url('peminjaman-delete/' . $val['id_peminjaman']) ?>" class="badge badge-danger" title="HAPUS" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash sm"></i></a>
+                        <a href="<?= base_url('peminjaman-update/' . $val['id_peminjaman']) ?>" class="badge badge-warning" title="EDIT" onclick="return confirm('Anda akan melakukan edit data. Dengan Melakukan edit data tanggal pengembalian akan otomatis terisi. Apakah Anda Yakin?')"><i class="fa fa-edit sm"></i></a>
+                        <a class="badge badge-success" title="KIRIM PESAN" onclick="return confirm('Anda akan mengirimkan pesan WhatsApp. Apakah Anda Yakin?')" href="https://wa.me/?text=Pesan%20dari%20Puskesmas%20Jenggawah%20:%20Mengingatkan%20bahwa%20data%20rekam%20medis%20pasien%20dengan%20no%20rm%20<?php echo $val["no_rm"]; ?>,%20Atas%20Nama%20<?php echo $val["nama_pasien"]; ?>%20di%20<?php echo $val["nama_poli"]; ?>%20Tanggal%20Pinjam%20<?php print_r($tgl_pinjam); ?>.%20Mohon%20harap%20segera%20dikembalikan.%20Terima%20Kasih." target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </td>
                 <?php } ?>
             </tr>

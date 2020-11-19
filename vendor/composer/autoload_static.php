@@ -52,6 +52,7 @@ class ComposerStaticInit37f676c891cfeffff1a7fb84570575fc
         array (
             'Psr\\Log\\' => 8,
             'Prophecy\\' => 9,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -140,6 +141,10 @@ class ComposerStaticInit37f676c891cfeffff1a7fb84570575fc
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'MyCLabs\\Enum\\' => 
         array (
