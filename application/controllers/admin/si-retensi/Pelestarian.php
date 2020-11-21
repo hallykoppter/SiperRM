@@ -117,4 +117,19 @@ class Pelestarian extends CI_Controller
 		$pasien = $this->db->get('tb_permintaan')->row_array();
 		echo json_encode($pasien);
 	}
+
+	public function upload_scan($id)
+	{
+		$image = $_FILES['image'];
+		$p = $this->db->get_where('tb_pelestarian', ['id_pelestarian' => $id])->result_array();
+
+		$config['upload_path'] = './uploads/scans/';
+		$config['allowed_types'] = 'jpg|jpeg|png|pdf';
+		$config['max_size'] = '3072';
+		$config['file_name'] = $p[0]['no_rm'];
+
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		$this->upload->do_upload();
+	}
 }
