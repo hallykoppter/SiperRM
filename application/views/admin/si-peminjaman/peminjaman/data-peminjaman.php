@@ -40,6 +40,13 @@
         <?php
         $no = 1;
         foreach ($peminjaman as $val) {
+
+            // if ($val['send_mail'] == 0) {
+            //     if ($val['keterlambatan'] == 2) {
+            //         $this->_sendMail();
+            //     }
+            // }
+
             $explode = explode('-', $val["tanggal_pinjam"]);
             $tahun = $explode[0];
             $bulan = $explode[1];
@@ -72,3 +79,5 @@
         ?>
     </tbody>
 </table>
+
+<a href="<?= base_url('admin/si-peminjaman/peminjaman/sendEmail'); ?>" class="btn btn-success btn-lg">Ini Tombol</a>

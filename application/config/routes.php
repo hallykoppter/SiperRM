@@ -74,6 +74,7 @@ $route['pelestarian/store'] = 'admin/si-retensi/Pelestarian/store';
 $route['pelestarian/edit/(:any)'] = 'admin/si-retensi/Pelestarian/edit/$1';
 $route['pelestarian/update'] = 'admin/si-retensi/Pelestarian/update';
 $route['pelestarian/delete/(:any)'] = 'admin/si-retensi/Pelestarian/delete/$1';
+$route['pelestarian/upload_scan/(:any)'] = 'admin/si-retensi/Pelestarian/upload_scan/$1';
 $route['pemusnahan'] = 'admin/si-retensi/Pemusnahan';
 $route['pemusnahan/tambah'] = 'admin/si-retensi/Pemusnahan/tambah';
 $route['pemusnahan/store'] = 'admin/si-retensi/Pemusnahan/store';

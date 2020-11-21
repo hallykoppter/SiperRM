@@ -48,17 +48,32 @@ class Peminjaman extends CI_Controller
 
 
 			$temp = [
-				'id_peminjaman' => $p['id_peminjaman'],
-				'no_rm' => $p['no_rm'],
-				'nama_pasien' => $p['nama_pasien'],
-				'nama_poli' => $p['nama_poli'],
-				'tanggal_pinjam' => $p['tanggal_pinjam'],
-				'tgl_kembali' => $p['tgl_kembali'],
-				'tgl_pengembalian' => $pengembalian,
-				'keterlambatan' => $keterlambatan,
-				'keterangan' => $keterangan,
+				'id_peminjaman' 		=> $p['id_peminjaman'],
+				'no_rm' 						=> $p['no_rm'],
+				'nama_pasien' 			=> $p['nama_pasien'],
+				'nama_poli'					=> $p['nama_poli'],
+				'tanggal_pinjam'	 	=> $p['tanggal_pinjam'],
+				'tgl_kembali' 			=> $p['tgl_kembali'],
+				'tgl_pengembalian' 	=> $pengembalian,
+				'keterlambatan' 		=> $keterlambatan,
+				'keterangan' 				=> $keterangan,
+				'send_mail' 				=> $p['send_mail'],
+				'status_peminjaman' => $p['status_peminjaman']
 			];
 			array_push($data['peminjaman'], $temp);
+		}
+
+		// fitur email otomatis
+		foreach ($data['peminjaman'] as $pinjam) {
+			if ($pinjam['send_mail'] == 0) {
+				if ($pinjam['status_peminjaman'] == 0) {
+					$this->_sendEmail();
+					$this->db->set('send_mail', 1);
+					$this->db->where('send_mail', 0);
+					$this->db->where('status_peminjaman', 0);
+					$this->db->update('tb_peminjaman');
+				}
+			}
 		}
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
@@ -166,5 +181,34 @@ class Peminjaman extends CI_Controller
 		$html = $this->load->view('admin/laporan/laporan-peminjaman/kartu-tracer', [], true);
 		$mpdf->WriteHTML($html);
 		$mpdf->Output($date . '-kartu_tracer.pdf', 'I');
+	}
+
+	private function _sendEmail()
+	{
+		$config = [
+			'protocol' 	=> 'smtp',
+			'smtp_host'	=> 'ssl://smtp.googlemail.com',
+			'smtp_user' => 'astirinarifin@gmail.com',
+			'smtp_pass' => 'Kagamine',
+			'smtp_port' => 465,
+			'mailtype' 	=> 'html',
+			'charset' 	=> 'utf-8',
+			'newline' 	=> "\r\n",
+		];
+
+		$this->load->library('email', $config);
+
+		$this->email->from('astirinarifin@gmail.com', 'Admin RM');
+		$this->email->to('astiariniarifin@gmail.com');
+		// $this->email->to('officialkurniasandi@gmail.com');
+		$this->email->subject('Siper RM - Peminjaman');
+		$this->email->message('Terdapat Berkas yang Belum kembali. Harap Segera Konfirmasi!!');
+
+		if ($this->email->send()) {
+			return true;
+		} else {
+			echo $this->email->print_debugger();
+			die;
+		}
 	}
 }

@@ -76,10 +76,10 @@ class Common extends CI_Model
 	public function getPeminjaman($id_peminjaman = null)
 	{
 		if ($id_peminjaman == null) {
-			$query = "SELECT p.id_peminjaman, p.no_rm,nama_pasien, nama_poli, tanggal_pinjam, tgl_kembali, tgl_pengembalian FROM tb_peminjaman AS p JOIN tb_pasien AS ps ON p.no_rm = ps.no_rm JOIN tb_poli AS pl ON p.id_poli = pl.id_poli ORDER BY id_peminjaman DESC";
+			$query = "SELECT p.id_peminjaman, p.no_rm, p.send_mail, p.status_peminjaman,nama_pasien, nama_poli, tanggal_pinjam, tgl_kembali, tgl_pengembalian FROM tb_peminjaman AS p JOIN tb_pasien AS ps ON p.no_rm = ps.no_rm JOIN tb_poli AS pl ON p.id_poli = pl.id_poli ORDER BY id_peminjaman DESC";
 			$get = $this->db->query($query)->result_array();
 		} else {
-			$query = "SELECT p.id_peminjaman, p.no_rm, p.pelayanan, p.id_poli,nama_pasien, nama_poli, tanggal_pinjam, tgl_kembali, tgl_pengembalian FROM tb_peminjaman AS p JOIN tb_pasien AS ps ON p.no_rm = ps.no_rm JOIN tb_poli AS pl ON p.id_poli = pl.id_poli WHERE id_peminjaman = $id_peminjaman";
+			$query = "SELECT p.id_peminjaman, p.no_rm, p.pelayanan, p.id_poli, p.send_mail, p.status_peminjaman,nama_pasien, nama_poli, tanggal_pinjam, tgl_kembali, tgl_pengembalian FROM tb_peminjaman AS p JOIN tb_pasien AS ps ON p.no_rm = ps.no_rm JOIN tb_poli AS pl ON p.id_poli = pl.id_poli WHERE id_peminjaman = $id_peminjaman";
 			$get = $this->db->query($query)->row_array();
 		}
 		return $get;

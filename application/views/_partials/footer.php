@@ -1,7 +1,7 @@
                         <div>
                         	<?php
-							$chart = file_get_contents(base_url('getchart'));
-							?>
+													$chart = file_get_contents(base_url('getchart'));
+													?>
                         	<!-- Card -->
                         	<div>
                         		<!-- breadcrumb -->
@@ -24,7 +24,7 @@
                         	</div>
                         	<script src="<?php echo base_url() . "assets/sb-admin/jquery/" ?>jquery-3.5.1.min.js"></script>
                         	<script src="<?php echo base_url() . "assets/sb-admin/ajax/" ?>bootstrap.bundle.min.js"></script>
-							<!-- webcam -->
+                        	<!-- webcam -->
                         	<script type="text/javascript" src="<?= base_url() ?>assets/sb-admin/webcam/js/filereader.js"></script>
                         	<script type="text/javascript" src="<?= base_url() ?>assets/sb-admin/webcam/js/qrcodelib.js"></script>
                         	<script type="text/javascript" src="<?= base_url() ?>assets/sb-admin/webcam/js/webcodecamjs.js"></script>
@@ -40,12 +40,12 @@
                         	<script src="<?php echo base_url() . "assets/sb-admin/ajax/" ?>dataTables.bootstrap4.min.js"></script>
                         	<script src="<?php echo base_url() . "assets/sb-admin/dist/" ?>assets/demo/datatables-demo.js"></script>
                         	<script src="<?php echo base_url() . "assets/sb-admin/dist/" ?>js/select2.min.js"></script>
-							<script src="<?php echo base_url()."assets/" ?>bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+                        	<script src="<?php echo base_url() . "assets/" ?>bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
                         	<script>
                         		$(document).ready(function() {
-									$(".datepicker").datepicker({
-										format: "dd-mm-yyyy"
-									});
+                        			$(".datepicker").datepicker({
+                        				format: "dd-mm-yyyy"
+                        			});
                         			$('.js-example-basic-single').select2();
                         			$(".changeStatus").click(function(e) {
                         				e.preventDefault();
@@ -73,39 +73,38 @@
                         					}
                         				})
                         			})
-									$(".changeStatusRM").click(function(e){
-										e.preventDefault();
-										var no_urut = $(this).data('urut');
-										var status = $(this).data('status')
-										$.ajax({
-											type: 'post',
-											data: {
-												status: status,
-												no_urut: no_urut
-											},
-											url: "<?= base_url()."admin/data_rm/updateStatus"?>",
-											success: function(respone){
-												var selector = ".changeStatusRM[data-status='" + status + "'][data-urut='" + no_urut + "']"
-												if(status == 0){
-													var selector2 = ".changeStatusRM[data-status='1'][data-urut='" + no_urut + "']"
-													$(selector).removeClass("btn-default")
-													$(selector).addClass("btn-danger")
-													$(selector2).removeClass("btn-success")
-													$(selector2).addClass("btn-default")
-//													$(this).attr("data-status","0")
-												}
-												else{
-													var selector2 = ".changeStatusRM[data-status='0'][data-urut='" + no_urut + "']"
-													$(selector).removeClass("btn-default")
-													$(selector).addClass("btn-success")
-													$(selector2).removeClass("btn-danger")
-													$(selector2).addClass("btn-default")
-//													$(this).attr("data-status","1")
-												
-												}
-											}
-										})
-									})
+                        			$(".changeStatusRM").click(function(e) {
+                        				e.preventDefault();
+                        				var no_urut = $(this).data('urut');
+                        				var status = $(this).data('status')
+                        				$.ajax({
+                        					type: 'post',
+                        					data: {
+                        						status: status,
+                        						no_urut: no_urut
+                        					},
+                        					url: "<?= base_url() . "admin/data_rm/updateStatus" ?>",
+                        					success: function(respone) {
+                        						var selector = ".changeStatusRM[data-status='" + status + "'][data-urut='" + no_urut + "']"
+                        						if (status == 0) {
+                        							var selector2 = ".changeStatusRM[data-status='1'][data-urut='" + no_urut + "']"
+                        							$(selector).removeClass("btn-default")
+                        							$(selector).addClass("btn-danger")
+                        							$(selector2).removeClass("btn-success")
+                        							$(selector2).addClass("btn-default")
+                        							//													$(this).attr("data-status","0")
+                        						} else {
+                        							var selector2 = ".changeStatusRM[data-status='0'][data-urut='" + no_urut + "']"
+                        							$(selector).removeClass("btn-default")
+                        							$(selector).addClass("btn-success")
+                        							$(selector2).removeClass("btn-danger")
+                        							$(selector2).addClass("btn-default")
+                        							//													$(this).attr("data-status","1")
+
+                        						}
+                        					}
+                        				})
+                        			})
                         		});
                         	</script>
                         	<script>

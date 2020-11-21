@@ -120,8 +120,8 @@ class Pelestarian extends CI_Controller
 
 	public function upload_scan($id)
 	{
-		$image = $_FILES['image'];
 		$p = $this->db->get_where('tb_pelestarian', ['id_pelestarian' => $id])->result_array();
+
 
 		$config['upload_path'] = './uploads/scans/';
 		$config['allowed_types'] = 'jpg|jpeg|png|pdf';
@@ -129,7 +129,18 @@ class Pelestarian extends CI_Controller
 		$config['file_name'] = $p[0]['no_rm'];
 
 		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
-		$this->upload->do_upload();
+
+		if ($this->upload->do_upload('image')) {
+			$new_name = $this->upload->data('file_name');
+			$this->db->set('image', $new_name);
+			$this->db->where('id_pelestarian', $p[0]['id_pelestarian']);
+			$this->db->update('tb_pelestarian');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">File berhasil diupload!</div>');
+			redirect('pelestarian');
+		} else {
+			$error = $this->upload->display_errors();
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
+			redirect('pelestarian');
+		}
 	}
 }
