@@ -47,9 +47,9 @@
 			<div class="form-group">
 				<label for="scan">Scan RM</label>
 				<select class="form-control js-example-basic-single" name="scan">
-                    <option disable>--Pilih Keterangan--</option>
+                    <!-- <option disable>--Pilih Keterangan--</option> -->
                     <option value="0">Belum Scan</option>
-                    <option value="1">Sudah Scan</option>
+                    <!-- <option value="1">Sudah Scan</option> -->
                 </select>
 			</div>
 		</div>

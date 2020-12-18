@@ -86,17 +86,22 @@
                         <input type="text" class="form-control" id="pelayanan" name="pelayanan" value="Rawat Jalan">
                     </div>
                     <div class="col-md-6">
-					<label for="">Tanggal Pinjam</label>
-                        <input type="date" class="form-control" name="tanggal_pinjam" value="<?= date('Y-m-d')?>">
-                        <?php 
-						$tanggal_now = date('Y-m-d');
-						$tambah_tanggal = mktime(0,0,0, date('m'), date ('d')+1, date('y'));
-						?>
+                        <label for="">Tanggal Pinjam</label>
+                        <input type="date" class="form-control" name="tanggal_pinjam" value="<?= date('Y-m-d') ?>">
+                        <?php
+                        $tanggal_now = date('Y-m-d');
+                        $tambah_tanggal = mktime(0, 0, 0, date('m'), date('d') + 1, date('y'));
+                        ?>
                     </div>
                     <div class="col-md-6">
                         <label for="">Tanggal Kembali</label>
-                        <input type="date" class="form-control" name="tgl_kembali" value="<?= date('Y-m-d',$tambah_tanggal) ?>">
-						
+                        <input type="date" class="form-control" name="tgl_kembali" value="<?= date('Y-m-d', $tambah_tanggal) ?>">
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" name="email" value="">
+
                     </div>
                     <div class="col-md-6">
                         <label for="">Poli yang Pinjam</label>

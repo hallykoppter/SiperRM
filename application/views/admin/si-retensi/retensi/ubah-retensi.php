@@ -34,7 +34,7 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="">Tanggal Kunjungan</label>
-				<input type="text" name="tanggal_kunjungan" class="form-control datepicker" value="<?= $retensi['tanggal_kunjungan'] ?>">
+				<input type="text" name="tanggal_kunjungan" class="form-control" value="<?= $retensi['tanggal_kunjungan'] ?>" readonly>
 			</div>
 		</div>
 		<div class="col-md-6">

@@ -42,7 +42,7 @@
 					if ($psn["status_aktif"] == "1") {
 						echo "<div class='btn btn-success btn-sm'>Aktif</div";
 					} else
-						echo "<div class='btn btn-danger btn-sm'>Non Aktif</div";
+						echo "<div class='btn btn-danger btn-sm'>InAktif</div";
 
 					?>
 				</td>

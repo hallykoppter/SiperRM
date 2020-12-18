@@ -39,9 +39,9 @@ class M_data extends CI_Model
 	public function filterpelestarian($dari = null, $sampai = null)
 	{
 		if ($dari != null && $sampai != null) {
-			$data = $this->db->query("SELECT no_rm, diagnosa, tanggal_kunjungan, tanggal_pelestarian FROM tb_pelestarian WHERE tanggal_pinjam BETWEEN '$dari' AND '$sampai'");
+			$data = $this->db->query("SELECT no_rm, diagnosa, tanggal_kunjungan, tanggal_pelestarian, keterangan FROM tb_pelestarian WHERE tanggal_pinjam BETWEEN '$dari' AND '$sampai'");
 		} else {
-			$data = $this->db->query("SELECT no_rm, diagnosa, tanggal_kunjungan, tanggal_pelestarian FROM tb_pelestarian");
+			$data = $this->db->query("SELECT no_rm, diagnosa, tanggal_kunjungan, tanggal_pelestarian, keterangan FROM tb_pelestarian");
 		}
 		return $data->result_array();
 	}

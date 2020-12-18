@@ -22,7 +22,7 @@ class Data_rm extends CI_Controller
 			$this->db->update('tb_pasien');
 		}
 		$data['pasien'] = $this->common->getDataIndexRM();
-		$header["title"] = "SiperRM";
+		$header["title"] = "SIPER RM";
 		$card["title"] = " Data RM";
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
@@ -32,7 +32,7 @@ class Data_rm extends CI_Controller
 
 	public function input()
 	{
-		$header["title"] = "SiperRM";
+		$header["title"] = "SIPER RM";
 		$card["title"] = " Data RM / Tambah Data";
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
@@ -51,7 +51,7 @@ class Data_rm extends CI_Controller
 	{
 		$filter = array("no_urut" => $id);
 		$data["data_rm"] = $this->common->getData("*", "tb_pasien", "", $filter, "");
-		$header["title"] = "SI Peminjaman";
+		$header["title"] = "SIPER RM";
 		$card["title"] = " Data RM / Edit Data";
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);

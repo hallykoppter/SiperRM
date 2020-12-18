@@ -35,7 +35,7 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="tanggal_kunjungan">Tanggal Kunjungan Terakhir</label>
-				<input type="date" name="tanggal_kunjungan" id="tanggal_kunjungan" class="form-control datepicker">
+				<input type="date" name="tanggal_kunjungan" id="tanggal_kunjungan" class="form-control" value="dd-mm-yyyy">
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -44,7 +44,7 @@
 				<input type="date" name="tanggal_pemindahan" value="<?= date('Y-m-d') ?>" class="form-control" readonly>
 			</div>
 		</div>
-		<!-- <div class="col-md-6">
+		<div class="col-md-6">
 			<label for="">Poli yang pinjam</label>
 			<select class="form-control selectpicker" data-live-search="true" name="poli" id="">
 				<option>---Pilih Data---</option>
@@ -52,7 +52,7 @@
 					<option value="<?= $p['id_poli'] ?>"><?= $p['nama_poli'] ?></option>
 				<?php endforeach; ?>
 			</select>
-		</div> -->
+		</div>
 	</div>
 	<button type="submit" class="btn btn-primary">Simpan</button>
 	<a href="<?= base_url('retensi') ?>" class="btn btn-secondary">Kembali</a>

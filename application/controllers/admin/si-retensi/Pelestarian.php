@@ -12,7 +12,7 @@ class Pelestarian extends CI_Controller
 	}
 	public function index()
 	{
-		$header["title"] = "SI Retensi";
+		$header["title"] = "SI Retensi dan Pemusnahan";
 		$card["title"] = " Pelestarian / Tambah Pelestarian";
 		$pelestarian = $this->M_data->get_pelestarian();
 		$tanggal_skrg = new DateTime(date("Y-m-d"));
@@ -123,7 +123,7 @@ class Pelestarian extends CI_Controller
 		$p = $this->db->get_where('tb_pelestarian', ['id_pelestarian' => $id])->result_array();
 
 
-		$config['upload_path'] = './uploads/scans/';
+		$config['upload_path'] = './uploads/pelestarian/';
 		$config['allowed_types'] = 'jpg|jpeg|png|pdf';
 		$config['max_size'] = '3072';
 		$config['file_name'] = $p[0]['no_rm'];
@@ -131,8 +131,11 @@ class Pelestarian extends CI_Controller
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('image')) {
+			$old_image = $p[0]['image'];
+			unlink(FCPATH . 'uploads/pelestarian/' . $old_image);
 			$new_name = $this->upload->data('file_name');
 			$this->db->set('image', $new_name);
+			$this->db->set('scan', 1);
 			$this->db->where('id_pelestarian', $p[0]['id_pelestarian']);
 			$this->db->update('tb_pelestarian');
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">File berhasil diupload!</div>');
@@ -142,5 +145,22 @@ class Pelestarian extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
 			redirect('pelestarian');
 		}
+	}
+
+	public function hasilscan($id)
+	{
+		$header["title"] = "SI Retensi";
+		$card["title"] = " Pelestarian / Berkas Pelestarian";
+		$scan['hasilscan'] = $this->db->get_where('tb_pelestarian', ['id_pelestarian' => $id])->result_array();
+		$this->load->view('_partials/header', $header);
+		$this->load->view('_partials/breadcrumb', $card);
+		$this->load->view('admin/si-retensi/pelestarian/upload_scan', $scan);
+		$this->load->view('_partials/footer');
+	}
+
+	public function hasilscanlagi()
+	{
+		var_dump($_FILES);
+		die;
 	}
 }

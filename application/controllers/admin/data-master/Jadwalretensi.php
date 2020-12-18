@@ -14,7 +14,7 @@ class Jadwalretensi extends CI_Controller
 	{
 		$data['jadwal'] = $this->db->get('tb_jadwal')->result_array();
 		$header["title"] = "SI Retensi";
-		$card["title"] = " Data Jadwal Retensi / Tambah Jadwal Retensi";
+		$card["title"] = " Data Jadwal Retensi / Atur Jadwal Retensi";
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);
 		$this->load->view('admin/data-master/jadwal-retensi/data-jadwal-retensi', $data);

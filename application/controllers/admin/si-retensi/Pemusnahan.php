@@ -12,7 +12,7 @@ class Pemusnahan extends CI_Controller
 	}
 	public function index()
 	{
-		$header["title"] = "SI Retensi";
+		$header["title"] = "SI Retensi dan Pemusnahan";
 		$card["title"] = " Pemusnahan / Tambah Pemusnahan";
 		$pemusnahan = $this->M_data->get_pemusnahan();
 		$tanggal_skrg = new DateTime(date("Y-m-d"));
@@ -112,5 +112,45 @@ class Pemusnahan extends CI_Controller
 		$this->db->where('no_rm', $no_rm);
 		$pasien = $this->db->get('tb_permintaan')->row_array();
 		echo json_encode($pasien);
+	}
+
+	public function upload_scan($id)
+	{
+		$p = $this->db->get_where('tb_pemusnahan', ['id_pemusnahan' => $id])->result_array();
+
+
+		$config['upload_path'] = './uploads/pemusnahan/';
+		$config['allowed_types'] = 'jpg|jpeg|png|pdf';
+		$config['max_size'] = '3072';
+		$config['file_name'] = $p[0]['no_rm'];
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('image')) {
+			$old_image = $p[0]['image'];
+			unlink(FCPATH . 'uploads/pemusnahan/' . $old_image);
+			$new_name = $this->upload->data('file_name');
+			$this->db->set('image', $new_name);
+			$this->db->set('scan', 1);
+			$this->db->where('id_pemusnahan', $p[0]['id_pemusnahan']);
+			$this->db->update('tb_pemusnahan');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">File berhasil diupload!</div>');
+			redirect('pemusnahan');
+		} else {
+			$error = $this->upload->display_errors();
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
+			redirect('pemusnahan');
+		}
+	}
+
+	public function hasilscan($id)
+	{
+		$header["title"] = "SI Retensi";
+		$card["title"] = " Pemusnahan / Berkas Pemusnahan";
+		$scan['hasilscan'] = $this->db->get_where('tb_pemusnahan', ['id_pemusnahan' => $id])->result_array();
+		$this->load->view('_partials/header', $header);
+		$this->load->view('_partials/breadcrumb', $card);
+		$this->load->view('admin/si-retensi/pemusnahan/upload_scan', $scan);
+		$this->load->view('_partials/footer');
 	}
 }

@@ -12,7 +12,7 @@ class Lretensi extends CI_Controller
 	}
 	public function index()
 	{
-		$header["title"] = "SI Retensi";
+		$header["title"] = "SI Retensi dan Pemusnahan";
 		$card["title"] = " Laporan Retensi / Laporan Retensi";
 		$data['cetak'] = $this->M_data->filter();
 		if (isset($_POST['filter'])) {

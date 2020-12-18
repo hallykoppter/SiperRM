@@ -45,7 +45,7 @@
 							<div class="badge badge-success">Kembali</div>
 						</td>
 						<td>
-							<div class="badge badge-danger">Nonaktif</div>
+							<div class="badge badge-danger">Inaktif</div>
 						</td>
 					<?php else : ?>
 						<td>
@@ -58,7 +58,7 @@
 					<td>
 						<a title="Edit" href="<?= base_url('retensi-update/' . $r['id_permintaan']) ?>" class="badge badge-warning" id="tombolEdit" style="color: white;"><i class="fa fa-edit"></i></a>
 						<a title="Hapus" href="<?= base_url('retensi-delete/' . $r['id_permintaan']) ?>" onclick="return confirm('yakin ingin menghapus data?')" class="badge badge-danger"><i class="fa fa-trash"></i></a>
-						<a title="KIRIM PESAN" href="https://wa.me/?text=Pesan%20dari%20SIPER-RM%20Puskesmas%20Jenggawah%20:%20Mengingatkan%20bahwa%20data%20rekam%20medis%20pasien%20dengan%20no%20rm%20<?php echo $r["no_rm"];?>,%20Atas%20Nama%20<?php echo $r["nama_pasien"];?>%20sudah%20diretensi .%20Mohon%20harap%20segera%20melakukan%20pelestarian%20atau%20pemusnahan.%20Terima%20Kasih." target="_blank" class="badge badge-success"><i class="fab fa-whatsapp"></i></a>
+						<a title="KIRIM PESAN" onclick="return confirm('Anda akan mengirimkan pesan WhatsApp. Apakah Anda Yakin?')" href="https://wa.me/?text=Pesan%20dari%20SIPER-RM%20Puskesmas%20Jenggawah%20:%20Mengingatkan%20bahwa%20data%20rekam%20medis%20pasien%20dengan%20no%20rm%20<?php echo $r["no_rm"];?>,%20Atas%20Nama%20<?php echo $r["nama_pasien"];?>%20sudah%20diretensi .%20Mohon%20harap%20segera%20melakukan%20pelestarian%20atau%20pemusnahan.%20Terima%20Kasih." target="_blank" class="badge badge-success"><i class="fab fa-whatsapp"></i></a>
 					</td>
 				</tr>
 				<?php $nomer++; ?>

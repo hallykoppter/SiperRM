@@ -7,6 +7,7 @@
         <th>Status Data</th>
         <th>Keterangan</th>
         <th>Status Scan</th>
+        <th>Hasil Upload</th>
         <th>Action</th>
     </thead>
     <tfoot>
@@ -17,6 +18,7 @@
             <th>Status Data</th>
             <th>Keterangan</th>
             <th>Status Scan</th>
+            <th>Hasil Upload</th>
             <th>Action</th>
         </tr>
     </tfoot>
@@ -46,6 +48,12 @@
                     <?php endif; ?>
                 </td>
                 <td>
+                    <?php if ($p['scan'] == "1") : ?>
+                        <a href="<?php echo base_url("pelestarian/hasilscan/") . $p["id_pelestarian"] ?>" class="btn btn-success btn-sm"><span> Lihat Berkas</span></a>
+                    <?php else : ?>
+                    <?php endif; ?>
+                </td>
+                <td>
                     <a title="Edit" href="<?php echo base_url('pelestarian/edit/' . $p['id_pelestarian']) ?>" class="btn btn-warning btn-sm" id="tombolEdit" style="color: white;"><i class="fa fa-edit"></i></a>
                     <a title="Hapus" href="<?php echo base_url('pelestarian/delete/' . $p['id_pelestarian']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')"><i class="fa fa-trash"></i></a>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal<?= $p['id_pelestarian'] ?>">Upload Scan</button>
@@ -63,7 +71,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Perhatian</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -76,12 +84,13 @@
                                 </div>
                                 <div class="col-sm-2 pt-4 mx-auto bg-primary">
                                     <button type="button" title="Scan" class="btn btn-info btn-sm" onclick="scan();">SCAN</button>
+                                    <button type="button" title="Scan" class="btn btn-info btn-sm" onclick="scanToWebPageAndUpload();">Upload</button>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="bg-success col-md-12">
-                                    <p class="pt-2 text-sm-justify">Jika sudah memiliki file, silahkan upload!</p>
+                                    <p class="pt-2 text-sm-justify">Silahkan upload file disini</p>
                                 </div>
                                 <div class="col-sm-12 mb-3 py-2 bg-light">
                                     <form action="<?= base_url('pelestarian/upload_scan/') . $p['id_pelestarian'] ?>" method="POST" enctype="multipart/form-data">
@@ -149,6 +158,24 @@
                     });
                     (document.getElementById('images') ? document.getElementById('images') : document.body).appendChild(elementImg);
                 }
+            }
+
+            function scanToWebPageAndUpload() {
+                scanner.scan(displayImagesOnPage, {
+                    "twain_cap_setting": {
+                        "ICAP_PIXELTYPE": "TWPT_RGB", // Color
+                        "ICAP_SUPPORTEDSIZES": "TWSS_USLETTER" // Paper size: TWSS_USLETTER, TWSS_A4, ...
+                    },
+                    "output_settings": [{
+                            "type": "upload",
+                            "format": "jpg",
+                            "upload_target": {
+                                "url": "https://asprise.com/scan/applet/upload.php?action=dump"
+                            }
+                        } // return images to web page
+
+                    ]
+                });
             }
         </script>
     </tbody>

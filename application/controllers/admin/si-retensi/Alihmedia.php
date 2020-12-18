@@ -10,7 +10,7 @@ class Alihmedia extends CI_Controller {
     }
     public function index()
 	{
-		$header["title"]= "SI Retensi"; 
+		$header["title"]= "SI Retensi dan Pelestarian"; 
 		$card["title"] = " Alih Media / Tambah Alih Media"; 
 		$this->load->view('_partials/header', $header);
 		$this->load->view('_partials/breadcrumb', $card);

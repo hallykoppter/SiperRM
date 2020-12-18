@@ -28,7 +28,7 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		$header["title"] = "Dashboard";
-		$card["title"] = "<marquee> Sistem Informasi Peminjaman, Pengembalian dan Retensi Puskesmas Jenggawah
+		$card["title"] = "<marquee> Sistem Informasi Peminjaman, Pengembalian, Retensi, dan Pemusnahan Rekam Medis di Puskesmas Jenggawah
 		 </marquee>";
 		$peminjaman = $this->db->get('tb_peminjaman')->result_array();
 		$jadwal = $this->db->get('tb_jadwal')->result_array();

@@ -67,11 +67,15 @@ class Peminjaman extends CI_Controller
 		foreach ($data['peminjaman'] as $pinjam) {
 			if ($pinjam['send_mail'] == 0) {
 				if ($pinjam['status_peminjaman'] == 0) {
-					$this->_sendEmail();
-					$this->db->set('send_mail', 1);
-					$this->db->where('send_mail', 0);
-					$this->db->where('status_peminjaman', 0);
-					$this->db->update('tb_peminjaman');
+					$kbl = new DateTime($p['tgl_pengembalian']);
+					$keterlambatan = $tanggalKembali->diff($kbl)->days;
+					if ($keterlambatan >= 1) {
+						$this->_sendEmail();
+						$this->db->set('send_mail', 1);
+						$this->db->where('send_mail', 0);
+						$this->db->where('status_peminjaman', 0);
+						$this->db->update('tb_peminjaman');
+					}
 				}
 			}
 		}
@@ -114,6 +118,7 @@ class Peminjaman extends CI_Controller
 			'status_data' => 1,
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
 			'id_poli' => $_POST['poli'],
+			'email' => $_POST['email'],
 		];
 
 		$this->db->insert('tb_peminjaman', $data);
@@ -185,6 +190,9 @@ class Peminjaman extends CI_Controller
 
 	private function _sendEmail()
 	{
+		$this->db->where('status_peminjaman', 0);
+		$this->db->select('email', 'no_rm');
+		$p = $this->db->get('tb_peminjaman')->result_array();
 		$config = [
 			'protocol' 	=> 'smtp',
 			'smtp_host'	=> 'ssl://smtp.googlemail.com',
@@ -197,12 +205,15 @@ class Peminjaman extends CI_Controller
 		];
 
 		$this->load->library('email', $config);
+		$this->email->initialize($config);
+		foreach ($p as $e) {
 
-		$this->email->from('astirinarifin@gmail.com', 'Admin RM');
-		$this->email->to('astiariniarifin@gmail.com');
-		// $this->email->to('officialkurniasandi@gmail.com');
-		$this->email->subject('Siper RM - Peminjaman');
-		$this->email->message('Terdapat Berkas yang Belum kembali. Harap Segera Konfirmasi!!');
+			$this->email->from('astirinarifin@gmail.com', 'Admin RM');
+			$this->email->to($e['email']);
+			// $this->email->to('officialkurniasandi@gmail.com');
+			$this->email->subject('Siper RM - Peminjaman');
+			$this->email->message('Anda belum mengembalikan berkas. Harap segera mengembalikan!');
+		}
 
 		if ($this->email->send()) {
 			return true;

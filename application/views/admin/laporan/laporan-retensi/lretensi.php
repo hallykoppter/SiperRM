@@ -87,8 +87,8 @@
                 <tr>
                     <td height="30"><?= $r['no_rm'] ?></td>
                     <td align="left"><?= $r['diagnosa'] ?></td>
-                    <td><?php echo date('d F Y', strtotime($r['tanggal_kunjungan'])); ?></td>
-                    <td><?php echo date('d F Y', strtotime($r['tanggal_pemindahan'])); ?></td>
+                    <td><?php echo date('d M Y', strtotime($r['tanggal_kunjungan'])); ?></td>
+                    <td><?php echo date('d M Y', strtotime($r['tanggal_pemindahan'])); ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
@@ -96,7 +96,7 @@
         <div class="bawah">
             <table border="0" align="right">
                 <tr>
-                    <td style="text-align: center">Jember, <?= date('d-m-Y') ?></td>
+                    <td style="text-align: center">Jember, <?= date('d F Y') ?></td>
                 </tr>
                 <tr>
                     <td height="70px">&nbsp;</td>

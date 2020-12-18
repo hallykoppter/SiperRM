@@ -102,6 +102,7 @@ if ($this->session->userdata('level') == null) {
 								<a class="nav-link" href="<?php echo base_url() . "laporan-peminjaman" ?>">Laporan Peminjaman</a>
 								<a class="nav-link" href="<?php echo base_url() . "laporan-pelestarian" ?>">Laporan Pelestarian</a>
 								<a class="nav-link" href="<?php echo base_url() . "laporan-pemusnahan" ?>">Laporan Pemusnahan</a>
+								<a class="nav-link" href="<?php echo base_url() . "bap" ?>">Berita Acara Pemusnahan</a>
 							</nav>
 						</div>
 						<?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'petugas poli' || $this->session->userdata('level') == 'petugas rm') {

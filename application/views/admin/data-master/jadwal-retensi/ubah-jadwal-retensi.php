@@ -4,5 +4,5 @@
         <input type="date" class="form-control" name="tanggal" value="<?= $jadwal['tanggal'] ?>">
         <input type="hidden" name="id_jadwal" value="<?= $jadwal['id_jadwal'] ?>">
     </div>
-    <button class="tomboltop btn btn-info" type="submit">UBAH</button>
+    <button class="tomboltop btn btn-info" type="submit">SIMPAN</button>
 </form>

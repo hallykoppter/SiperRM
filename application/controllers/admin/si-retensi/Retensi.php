@@ -12,7 +12,7 @@ class Retensi extends CI_Controller
 	}
 	public function index()
 	{
-		$header["title"] = "SI Retensi";
+		$header["title"] = "SI Retensi dan Pemusnahan";
 		$card["title"] = " Retensi / Data Retensi";
 		$data['retensi'] = $this->M_data->get_retensi();
 		$this->load->view('_partials/header', $header);
@@ -128,7 +128,7 @@ class Retensi extends CI_Controller
 			'id_pengguna' => $this->session->userdata('id_pengguna'),
 			'status_permintaan' => $status_pengembalian,
 			'id_status' => $id_status,
-			'id_poli' => $_POST["poli"],
+			// 'id_poli' => $_POST["poli"],
 			'tanggal_kunjungan' => date("Y-m-d", strtotime($_POST['tanggal_kunjungan'])),
 			'tanggal_pemindahan' => date("Y-m-d", strtotime($_POST['tanggal_pemindahan'])),
 		];
@@ -140,14 +140,14 @@ class Retensi extends CI_Controller
 		echo "<script>document.location.href='$url'</script>";
 	}
 
-	public function tglpinjam()
-	{
-		$no_rm = $_POST['no_rm'];
-		$this->db->select('no_rm, tanggal_kunjungan');
-		$this->db->where('no_rm', $no_rm);
-		$pasien = $this->db->get('tb_peminjaman')->row_array();
-		echo json_encode($pasien);
-	}
+	// public function tglpinjam()
+	// {
+	// 	$no_rm = $_POST['no_rm'];
+	// 	$this->db->select('no_rm, tanggal_kunjungan');
+	// 	$this->db->where('no_rm', $no_rm);
+	// 	$pasien = $this->db->get('tb_peminjaman')->row_array();
+	// 	echo json_encode($pasien);
+	// }
 
 	public function addById($id)
 	{
