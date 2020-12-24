@@ -118,10 +118,10 @@ class Pelestarian extends CI_Controller
 		echo json_encode($pasien);
 	}
 
-	public function upload_scan($id)
+	public function upload_scan()
 	{
+		$id = $this->input->post('id_pelestarian');
 		$p = $this->db->get_where('tb_pelestarian', ['id_pelestarian' => $id])->result_array();
-
 
 		$config['upload_path'] = './uploads/pelestarian/';
 		$config['allowed_types'] = 'jpg|jpeg|png|pdf';
@@ -130,7 +130,7 @@ class Pelestarian extends CI_Controller
 
 		$this->load->library('upload', $config);
 
-		if ($this->upload->do_upload('image')) {
+		if ($this->upload->do_upload('file')) {
 			$old_image = $p[0]['image'];
 			unlink(FCPATH . 'uploads/pelestarian/' . $old_image);
 			$new_name = $this->upload->data('file_name');
@@ -156,11 +156,5 @@ class Pelestarian extends CI_Controller
 		$this->load->view('_partials/breadcrumb', $card);
 		$this->load->view('admin/si-retensi/pelestarian/upload_scan', $scan);
 		$this->load->view('_partials/footer');
-	}
-
-	public function hasilscanlagi()
-	{
-		var_dump($_FILES);
-		die;
 	}
 }

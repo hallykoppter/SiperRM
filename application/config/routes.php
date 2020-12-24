@@ -75,7 +75,9 @@ $route['pelestarian/edit/(:any)'] = 'admin/si-retensi/Pelestarian/edit/$1';
 $route['pelestarian/update'] = 'admin/si-retensi/Pelestarian/update';
 $route['pelestarian/delete/(:any)'] = 'admin/si-retensi/Pelestarian/delete/$1';
 // $route['pelestarian/deletescan/(:any)'] = 'admin/si-retensi/Pelestarian/deletescan/$1';
-$route['pelestarian/upload_scan/(:any)'] = 'admin/si-retensi/Pelestarian/upload_scan/$1';
+// $route['pelestarian/upload_scan/(:any)'] = 'admin/si-retensi/Pelestarian/upload_scan/$1';
+$route['pelestarian/upload_scan'] = 'admin/si-retensi/Pelestarian/upload_scan';
+$route['pelestarian/hasilscan/(:any)'] = 'admin/si-retensi/Pelestarian/hasilscan/$1';
 $route['pelestarian/hasilscan/(:any)'] = 'admin/si-retensi/Pelestarian/hasilscan/$1';
 $route['pemusnahan'] = 'admin/si-retensi/Pemusnahan';
 $route['pemusnahan/tambah'] = 'admin/si-retensi/Pemusnahan/tambah';
@@ -147,6 +149,9 @@ $route['poli/input'] = 'admin/data-master/Poli/input';
 $route['poli/insert'] = 'admin/data-master/Poli/insert';
 $route['poli/delete'] = 'admin/data-master/Poli/delete';
 $route['poli/hapus'] = 'admin/data-master/Poli/hapus';
+
+
+$routep['pelestarian/sap'] = 'admin/si-retensi/Pelestarian/sap';
 
 //login
 $route['authlogin'] = 'Authlogin';
